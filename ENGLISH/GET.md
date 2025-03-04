@@ -1,11 +1,11 @@
 ﻿
 ### Using GET:
 
-|             GET using               |    Meaning       |
-| ----------------------------------- | ------------ |
+|             GET using               |     Meaning       |
+| ----------------------------------- | ----------------- |
 | GET IN TOUCH                        | Зв'язатися із ... |
-| GET bored                           | Знудитися |
-| I DON'T GET THIS exercise           | Не розуміти |
+| GET bored                           | Знудитися         |
+| I DON'T GET THIS exercise           | Не розуміти       |
 | GET RID OF                          | Позбутися від ... |
 | GET TO KNOW smb.                    | Познайомитися поближче із ... |
 | GET TO the station                  | Прибути до станції |

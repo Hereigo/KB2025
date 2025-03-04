@@ -3,6 +3,7 @@
  - https://en.linuxAdictos.com
  - https://en.ubunlog.com
  - https://freedesktop.org
+ - https://github.com/luong-komorebi/Awesome-Linux-Software
  - https://itsfoss.com
  - https://linuxiac.com
  - https://linuxjourney.com
@@ -17,4 +18,3 @@
  - https://www.reddit.com/r/linux/
  - https://www.tecmint.com
  - https://www.zdnet.com
- 

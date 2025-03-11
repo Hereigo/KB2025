@@ -8,6 +8,7 @@
  - https://linuxiac.com
  - https://linuxjourney.com
  - https://theHackerNews.com
+ - https://thelinuxexp.com/
  - https://www.ghacks.net
  - https://www.ghacks.net/category/linux/
  - https://www.linuxlinks.com

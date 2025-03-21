@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# LR0008: Summary is missing
+dotnet_diagnostic.LR0008.severity = silent
+
+# LR0002: Prefix is incorrect
+dotnet_diagnostic.LR0002.severity = silent

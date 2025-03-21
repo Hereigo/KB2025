@@ -1,21 +1,22 @@
- - https://9to5linux.com
- - https://blog.desdelinux.net/en/
- - https://en.linuxAdictos.com
- - https://en.ubunlog.com
- - https://freedesktop.org
- - https://github.com/luong-komorebi/Awesome-Linux-Software
- - https://itsfoss.com
- - https://linuxiac.com
- - https://linuxjourney.com
- - https://theHackerNews.com
- - https://thelinuxexp.com/
- - https://www.ghacks.net
- - https://www.ghacks.net/category/linux/
- - https://www.linuxlinks.com
- - https://www.maketecheasier.com
- - https://www.omgubuntu.co.uk
- - https://www.osnews.com
- - https://www.phoronix.com
- - https://www.reddit.com/r/linux/
- - https://www.tecmint.com
- - https://www.zdnet.com
+https://9to5linux.com
+https://blog.desdelinux.net/en/
+https://en.linuxAdictos.com
+https://en.ubunlog.com
+https://freedesktop.org
+https://github.com/luong-komorebi/Awesome-Linux-Software
+https://itsfoss.com
+https://linuxiac.com
+https://linuxjourney.com
+https://theHackerNews.com
+https://theLinuxExp.com
+https://www.ghacks.net
+https://www.ghacks.net/category/linux/
+https://www.linuxlinks.com
+https://www.maketecheasier.com
+https://www.omgubuntu.co.uk
+https://www.osnews.com
+https://www.phoronix.com
+https://www.reddit.com/r/linux/
+https://www.tecmint.com
+https://www.unixmen.com
+https://www.zdnet.com

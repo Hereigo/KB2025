@@ -2,6 +2,7 @@ https://9to5linux.com
 https://blog.desdelinux.net/en/
 https://en.linuxAdictos.com
 https://en.ubunlog.com
+https://forums.debian.net/index.php
 https://freedesktop.org
 https://github.com/luong-komorebi/Awesome-Linux-Software
 https://itsfoss.com

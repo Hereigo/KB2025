@@ -1,6 +1,4 @@
-﻿
-//  using Domain; ???????????????
-
+﻿using WebApp.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebApp.Controllers

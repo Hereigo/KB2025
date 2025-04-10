@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Persistanse
 {
-    class CalendRepository
+    public class CalendRepository
     {
     }
 }

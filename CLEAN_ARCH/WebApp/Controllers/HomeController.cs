@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using Domain;
+using AutoMapper;
 using Infrastructure.Persistanse;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,14 +14,16 @@ public class HomeController : Controller
     private readonly CalDbContext _context;
     private readonly IHostEnvironment _hostEnvironment;
     private readonly ILogger<HomeController> _logger;
+    private readonly Lazy<IMapper> _mapper;
 
     private const int _historyLines = 40;
 
-    public HomeController(CalDbContext context, ILogger<HomeController> logger, IHostEnvironment hostEnvironment)
+    public HomeController(CalDbContext context, ILogger<HomeController> logger, IHostEnvironment hostEnvironment, Lazy<IMapper> mapper)
     {
         _context = context;
         _hostEnvironment = hostEnvironment;
         _logger = logger;
+        _mapper = mapper;
 
         ViewBag.CssChanged =
             new FileInfo(Path.Combine(Directory.GetCurrentDirectory(), "/wwwroot/css/site.min.css")).LastWriteTime.ToString("yyMMddHHmm");
@@ -105,4 +107,101 @@ public class HomeController : Controller
             }
         }
     }
-}
+
+    private List<CalEvent> GenerateRepeatingEvents(List<CalEvent> events, DateTime sheetFirstDay, DateTime sheetLastDay, DateTime today)
+        {
+            var eventsModel = new List<CalEvent>();
+            int currMonMaxDay = Utils.Utils.GetMaxDayOfTheMonth(today);
+
+            foreach (var evt in events)
+            {
+                if (evt.Repeat == CalEventRepeat.Monthly)
+                {
+                    int betweenStartedAndSheet = today.Month - evt.Started.Month;
+
+                    for (int i = -1; i <= 1; i++) // Add for 3 month (Prev, Current, Next and Prev.):
+                    {
+                        //var startedDateForMonthlyOLD = new DateTime(today.Year, today.Month, evt.Day).AddMonths(i);
+
+                        // TODO:
+
+                        // Handle 29 of February!!!!!!!!!!!!!
+                        // Handle 29 of February!!!!!!!!!!!!!
+                        var startedDateForMonthly = new DateTime(today.Year, evt.Started.Month, evt.Day).AddMonths(betweenStartedAndSheet + i);
+
+                        if (startedDateForMonthly >= sheetFirstDay && startedDateForMonthly <= sheetLastDay)
+                        {
+                            eventsModel.Add(new CalEvent()
+                            {
+                                Id = evt.Id,
+                                Day = evt.Started.Day,
+                                Description = evt.Description,
+                                EveryXDays = evt.EveryXDays,
+                                Modified = evt.Modified,
+                                Month = startedDateForMonthly.Month,
+                                Repeat = evt.Repeat,
+                                Started = startedDateForMonthly,
+                                Status = evt.Status,
+                                Time = evt.Time,
+                                Year = startedDateForMonthly.Year
+                            });
+                        }
+                    }
+                }
+                else if (evt.Repeat == CalEventRepeat.Yearly)
+                {
+                    var startedDateForYearly = new DateTime(today.Year, evt.Month, evt.Day);
+
+                    if (startedDateForYearly >= sheetFirstDay && startedDateForYearly <= sheetLastDay)
+                    {
+                        eventsModel.Add(new CalEvent()
+                        {
+                            Id = evt.Id,
+                            Day = evt.Started.Day,
+                            Description = evt.Description,
+                            EveryXDays = evt.EveryXDays,
+                            Modified = evt.Modified,
+                            Month = startedDateForYearly.Month,
+                            Repeat = evt.Repeat,
+                            Started = startedDateForYearly,
+                            Status = evt.Status,
+                            Time = evt.Time,
+                            Year = startedDateForYearly.Year
+                        });
+                    }
+                }
+                else if (evt.Repeat == CalEventRepeat.EveryXdays)
+                {
+                    var startedDateForCurrent = evt.Started;
+
+                    while (startedDateForCurrent <= sheetLastDay)
+                    {
+                        if (startedDateForCurrent >= sheetFirstDay)
+                        {
+                            eventsModel.Add(new CalEvent()
+                            {
+                                Id = evt.Id,
+                                Day = evt.Started.Day,
+                                Description = evt.Description,
+                                EveryXDays = evt.EveryXDays,
+                                Modified = evt.Modified,
+                                Month = (evt.Repeat == CalEventRepeat.Monthly) ? 0 : evt.Started.Month,
+                                Repeat = evt.Repeat,
+                                Started = startedDateForCurrent.Date,
+                                Status = evt.Status,
+                                Time = evt.Time,
+                                Year = (evt.Repeat == CalEventRepeat.Yearly) ? 0 : evt.Started.Year
+                            });
+                        }
+                        // date increment.
+                        startedDateForCurrent = startedDateForCurrent.AddDays(evt.EveryXDays.Value);
+                    }
+                }
+                else
+                {
+                    eventsModel.Add(evt);
+                }
+            }
+            return eventsModel;
+        }
+    }

@@ -28,4 +28,36 @@ const truthyArr = arr.filter(Boolean);
 
 console.log(truthyArr); // =>  [ 3, 6, 7, -8 ]
 
+// lookup template
+
+$(function () {
+    $('.js-address-container').each(function () {
+        var $this = $(this);
+        this.addEventListener('select-address', (e) => {
+            SelectAddress(e, $this)
+        });
+    });
+ 
+    function SelectAddress(e, $this) {
+        SetOrHideAddress('[id*="Address1"]', e.detail.address1, $this);
+        SetOrHideAddress('[id*="Address2"]', e.detail.address2, $this);
+        SetOrHideAddress('[id*="Address3"]', e.detail.address3, $this);
+        SetOrHideAddress('[id*="Town"]', e.detail.town, $this);
+        SetOrHideAddress('[id*="Country"]', e.detail.country, $this)
+        SetOrHideAddress('[id*="PostCode"]', e.detail.postcode, $this)
+        $this.find('[id*="Uprn"]').val(e.detail.uprn);
+        $this.find('.address-display').removeClass("hidden");
+    }
+ 
+    function SetOrHideAddress(selector, value, $this) {
+        if (value == "") {
+            $this.find(selector).val("");
+            $this.find(selector).hide()
+        }
+        else {
+            $this.find(selector).val(value);
+            $this.find(selector).show()
+        }
+    }
+})
 ```

@@ -19,7 +19,6 @@
 document.designMode="on"
 
 
-
 // Filter only numbers from Mixed Array (except of zero)
 
 const arr = [null, 3, 0, 6, 7, -8, "", false];
@@ -60,4 +59,50 @@ $(function () {
         }
     }
 })
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Button Insert Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="radio-buttons-container">
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'API-ENDPOINT',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (Array.isArray(data)) {
+                        data.forEach(function(item) {
+                            const radioButton = `
+                                <label>
+                                    <input type="radio" name="radioGroup" value="${item.number}">
+                                    ${item.name}
+                                </label><br>
+                            `;
+                            $('#radio-buttons-container').append(radioButton);
+                        });
+                    } else {
+                        console.log("Returned data is not an array.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error fetching data: ", error);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
 ```

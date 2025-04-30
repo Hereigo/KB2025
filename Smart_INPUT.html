@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        body {
+            padding: 3rem;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .input-wrapper {
+            position: relative;
+            margin: 20px 0;
+            width: 250px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 20px 10px 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .input-wrapper label {
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            font-size: 14px;
+            color: #777;
+            pointer-events: none;
+            transition: 0.2s ease all;
+        }
+
+        /* Optional: Move label up on focus or if there's input */
+        .input-wrapper input:focus+label,
+        .input-wrapper input:not(:placeholder-shown)+label {
+            top: 2px;
+            font-size: 12px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+
+    <div class="input-wrapper">
+        <input type="text" placeholder=" " id="username" />
+        <label for="username">Username</label>
+    </div>
+    </p>
+    <hr />
+    <hr />
+    <hr />
+    <p>
+    <form>
+        <input id="regNumber" type="text" />
+        <span class="error" id="regNumberError"></span><br />
+        <input type="submit" />
+    </form>
+    </p>
+    <script>
+
+        $('#regNumber').on('input', function () {
+            if ($('#regNumber').val().length < 3) {
+                $('#regNumber').val('ABC');
+            } else {
+                $('#regNumber').val($(this).val().toUpperCase());
+            }
+        });
+
+        $('form').submit(function () {
+            const regNumber = $("#regNumber").val();
+            if (regNumber.length < 6) {
+                $("#regNumberError").text("Reg.Number must be at least 6 characters.");
+                valid = false;
+            }
+            if (!valid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+
+</html>

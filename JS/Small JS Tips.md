@@ -106,3 +106,41 @@ $(function () {
 </html>
 
 ```
+
+```js
+function showSuccessUploadStatus() {
+    displayWarnings(null, 'Uploaded', "success");
+}
+
+function displayWarnings(warningHeader, warningDescription, warningType) {
+
+    var warnBlock = getWarningsBlock();
+
+    if (warningType === "notice") {
+        warnBlock.removeClass("alert-danger alert-success");
+        warnBlock.addClass("alert-warning");
+    } else if (warningType === "success") {
+        warnBlock.removeClass("alert-danger alert-warning");
+        warnBlock.addClass("alert-success");
+    } else {
+        warnBlock.removeClass("alert-success alert-warning");
+        warnBlock.addClass("alert-danger");
+    }
+
+    if (warningHeader) {
+        getWarningHeaderElement().show();
+        getWarningHeaderElement().text(warningHeader);
+    }
+    getWarningDescriptionElement().text(warningDescription);
+    warnBlock.show();
+}
+
+function getWarningsBlock() {
+    return $('#photo-upload-warnings');
+}
+
+function hideWarnings() {
+    getWarningHeaderElement().hide();
+    getWarningsBlock().hide();
+}
+```

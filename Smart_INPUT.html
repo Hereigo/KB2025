@@ -16,77 +16,78 @@
             color: red;
         }
 
+        input[type=submit] {
+            margin-top: 5px;
+            padding: 5px 10px;
+        }
+
         .input-wrapper {
+            margin: 5px 0;
             position: relative;
-            margin: 20px 0;
             width: 250px;
         }
 
         .input-wrapper input {
-            width: 100%;
-            padding: 20px 10px 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
             border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            padding: 20px 10px 10px;
+            width: 100%;
         }
 
         .input-wrapper label {
+            color: #777;
+            font-size: 14px;
+            left: 10px;
+            pointer-events: none;
             position: absolute;
             top: 8px;
-            left: 10px;
-            font-size: 14px;
-            color: #777;
-            pointer-events: none;
             transition: 0.2s ease all;
         }
 
         /* Optional: Move label up on focus or if there's input */
         .input-wrapper input:focus+label,
         .input-wrapper input:not(:placeholder-shown)+label {
-            top: 2px;
-            font-size: 12px;
             color: #333;
+            font-size: 12px;
+            top: 2px;
         }
     </style>
 </head>
 
 <body>
     <p>
-
-    <div class="input-wrapper">
-        <input type="text" placeholder=" " id="username" />
-        <label for="username">Username</label>
-    </div>
-    </p>
-    <hr />
-    <hr />
-    <hr />
-    <p>
     <form>
-        <input id="regNumber" type="text" />
-        <span class="error" id="regNumberError"></span><br />
+        <div class="input-wrapper">
+            <input type="text" placeholder=" " id="regNumber" />
+            <label for="regNumber">Reg.Number</label>
+        </div>
+        <div class="error" id="regNumberError"></div>
         <input type="submit" />
     </form>
     </p>
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
-        $('#regNumber').on('input', function () {
-            if ($('#regNumber').val().length < 3) {
-                $('#regNumber').val('ABC');
-            } else {
-                $('#regNumber').val($(this).val().toUpperCase());
-            }
-        });
+            $('#regNumber').on('input', function () {
+                if ($('#regNumber').val().length < 3) {
+                    $('#regNumber').val('ABC');
+                } else {
+                    $('#regNumber').val($(this).val().toUpperCase());
+                }
+            });
 
-        $('form').submit(function () {
-            const regNumber = $("#regNumber").val();
-            if (regNumber.length < 6) {
-                $("#regNumberError").text("Reg.Number must be at least 6 characters.");
-                valid = false;
-            }
-            if (!valid) {
-                event.preventDefault();
-            }
+            $('form').submit(function () {
+                const regNumber = $("#regNumber").val();
+                if (regNumber.length < 6) {
+                    $("#regNumberError").text("Reg.Number must be at least 6 characters.");
+                    valid = false;
+                }
+                if (!valid) {
+                    event.preventDefault();
+                }
+            });
+
         });
     </script>
 </body>

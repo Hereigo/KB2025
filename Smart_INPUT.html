@@ -69,8 +69,10 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
 
+            // $('#regNumber').val('ABC');
+
             $('#regNumber').on('input', function () {
-                if ($('#regNumber').val().length < 3) {
+                if (!$('#regNumber').val().match("^ABC")) {
                     $('#regNumber').val('ABC');
                 } else {
                     $('#regNumber').val($(this).val().toUpperCase());

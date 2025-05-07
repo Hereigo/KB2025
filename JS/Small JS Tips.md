@@ -143,4 +143,23 @@ function hideWarnings() {
     getWarningHeaderElement().hide();
     getWarningsBlock().hide();
 }
+
+$(function () {
+    $('.js-some-container').each(function () {
+        this.addEventListener('select-address', (e) => {
+            selectAddress(e);
+        });
+    });
+ 
+    function selectAddress(e) {
+        setOrHideAddress('[id*="Address1"]', e.detail.address1, this);
+        setOrHideAddress('[id*="Address2"]', e.detail.address2, this);
+        setOrHideAddress('[id*="Address3"]', e.detail.address3, this);
+        setOrHideAddress('[id*="Town"]', e.detail.town, this);
+        setOrHideAddress('[id*="Country"]', e.detail.country, this)
+        setOrHideAddress('[id*="PostCode"]', e.detail.postcode, this)
+        $(this).find('[id*="Uprn"]').val(e.detail.uprn);
+    }
+
+})
 ```

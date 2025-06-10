@@ -1,0 +1,179 @@
+<html>
+
+<head>
+    <title>
+        Photograph
+    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <!-- 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-jcrop@0.9.15/css/jquery.Jcrop.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery-jcrop@0.9.15/js/jquery.Jcrop.min.js"></script>
+    -->
+    <link href="./crop-photo.css" type="text/css" rel="stylesheet">
+    <link href="./jquery.Jcrop.min.css" type="text/css" rel="stylesheet">
+    <script src="./jquery.Jcrop.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="main-container" style="margin: 2rem;">
+        <span id="photo-data" style="display: none" result-width="400" result-height="525">
+            <input marker="script_CropParams" type="hidden"
+                value="{&quot;x&quot;:0,&quot;y&quot;:0,&quot;width&quot;:866,&quot;height&quot;:1300}" />
+        </span>
+
+        <img id="cropping-photo" alt="[Cropping Photo]" src="./image.jpg">
+
+        <div style="margin: .5rem 0;">
+            <input id="btnRotate" class="sbttn" onclick="javascript:RotatePhoto()" type="button" value="Rotate">
+            &nbsp;
+            <input id="btnSubmit" class="sbttn" onclick="javascript:SubmitCropping()" type="button" value="Save">
+            <br />
+            <label id="warningSubmit" style="display: none; color: red">Selection is too small.</label>
+            <input id="cropSubmitUrl" type="hidden" value="/BackendAPI/SaveCroppedPhoto.ashx">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        const photoCropID = "#cropping-photo";
+        let cropH;
+        let cropW;
+        let cropX;
+        let cropY;
+        let cropMinimal = 70; // in pixels
+        let cropRatio = 0.76; // default value if can't compute
+        let jcrop_api;
+        let renderedH;
+        let renderedW;
+        let rotation;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!rotation) {
+                rotation = 0;
+            }
+            SetupCropRatio();
+            CropEnable();
+        });
+
+        function SetupCropRatio() {
+            var resultWidth = parseInt($("#photo-data").attr("result-width"));
+            var resultHeight = parseInt($("#photo-data").attr("result-height"));
+            if (!isNaN(resultWidth) && !isNaN(resultHeight)) {
+                cropRatio = Number((resultWidth / resultHeight).toFixed(2));
+            }
+        }
+
+        function CropDisable() {
+            if (jcrop_api) {
+                jcrop_api.destroy();
+            }
+            if (jcrop_api) {
+                jcrop_api = null;
+            }
+            $(photoCropID).removeAttr('style');
+        }
+
+        function CropEnable() {
+            let cropParams = $('[marker="script_CropParams"]').val();
+            if (cropParams.length) {
+                cropParams = cropParams.replaceAll('&quot;', '"').replace('\'', '"');
+                try {
+                    let paramsObj = $.parseJSON(cropParams);
+                    cropY = paramsObj.y;
+                    cropX = paramsObj.x;
+                    cropW = paramsObj.width;
+                    cropH = paramsObj.height;
+                } catch (e) {
+                    console.error("Invalid CropParams JSON: ", e.message);
+                }
+            }
+            const img = document.getElementById("cropping-photo");
+            // Waiting for the image to load to get the Rendered sizes.
+            img.onload = () => {
+                renderedW = img.width;
+                renderedH = img.height;
+            };
+            $(photoCropID).Jcrop({
+                setSelect: [cropX, cropY, cropW, cropH],
+                allowResize: true,
+                allowMove: true,
+                aspectRatio: cropRatio,
+                //onChange: updateCropParams, // - useless now
+                onSelect: updateCropParams
+            }, function () {
+                jcrop_api = this;
+            });
+        }
+
+        function RotatePhoto() {
+            // CropDisable is necessary to allow rotate.
+            CropDisable();
+            var photoUrl = $(photoCropID).attr("src");
+            var urlParts = photoUrl.split("Rotation=");
+            rotation = parseInt(urlParts[1].substring(0, 1));
+            if (!isNaN(rotation)) {
+                var newUrl = urlParts[0] + "Rotation=" + (++rotation);
+                $(photoCropID).attr("src", newUrl);
+            }
+            CropEnable();
+        }
+
+        function updateCropParams(c) {
+            let h = parseFloat(c.h).toFixed(0);
+            let w = parseFloat(c.w).toFixed(0);
+            if (!h || !w || h < cropMinimal || w < cropMinimal) {
+                $("#btnSubmit").hide();
+                $("#warningSubmit").show();
+            } else {
+                cropY = c.y;
+                cropX = c.x;
+                cropW = w;
+                cropH = h;
+                $("#warningSubmit").hide();
+                $("#btnSubmit").show();
+            }
+
+            console.log("X - ", c.x, ", Y - ", c.y, ", W - ", w, ", H - ", h);
+        }
+
+        function SubmitCropping() {
+            let photo = document.getElementById("cropping-photo");
+            let originalH = photo.naturalHeight;
+            let originalW = photo.naturalWidth;
+
+            if (!renderedH || !renderedW) {
+                location.reload(); // To resolve to rare issues with the rendered size defining.
+            } else {
+                let ratio = (photo.naturalHeight / renderedH).toFixed(3);
+                let croppedX = (cropX * ratio).toFixed();
+                let croppedY = (cropY * ratio).toFixed();
+                let croppedW = (cropW * ratio).toFixed();
+                let croppedH = (cropH * ratio).toFixed();
+                if (croppedW > originalW) {
+                    croppedW = originalW;
+                }
+                if (croppedH > originalH) {
+                    croppedH = originalH;
+                }
+                let submitUrl = $("#cropSubmitUrl").val();
+                if (submitUrl.length) {
+                    submitUrl += ("&Rotation=" + rotation + "&x=" + croppedX + "&y=" + croppedY + "&width=" + croppedW + "&height=" + croppedH);
+                    $.ajax({
+                        url: submitUrl,
+                        type: 'GET',
+                        success: function (response) {
+                            console.log('Success:', response);
+                            window.close();
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Error:', error);
+                        }
+                    });
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

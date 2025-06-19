@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Simple Form with Enum Field</title>
+</head>
+
+<body>
+    <div style="margin: 4rem;">
+        <input type="date" value="1970-04-07" />
+    </div>
+    <hr />
+    <div style="margin: 4rem;">
+        <input type="file" id="imageInput" />
+    </div>
+
+    <script>
+        // document.getElementById('fileInput').addEventListener('change', function (event) {
+        //     const file = event.target.files[0];
+        //     const reader = new FileReader();
+        //     reader.onload = function (e) {
+        //         console.log(e.target.result.length);
+        //     };
+        //     reader.readAsText(file);
+        // });
+
+        var allowedImages = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/jpg'];
+
+        document.getElementById('imageInput').addEventListener('change', function (event) {
+
+            const file = event.target.files[0];
+
+            console.log(file.type);
+
+            if (!allowedImages.includes(file.type)) {
+
+                console.log("NOT ALLOWED TYPE - ", file.type);
+                return;
+
+            }
+
+            const reader = new FileReader();
+
+            var photoHeight;
+            var photoWidth;
+
+            reader.onload = function (e) {
+                const img = new Image();
+                img.onload = function () {
+                    photoWidth = img.width;
+                    photoHeight = img.height;
+
+                    console.log(photoWidth, " x ", photoHeight);
+
+                    if (photoWidth < 400 || photoHeight < 525) {
+                        console.log("PHOTO MUST BE 400 x 525");
+                        return;
+                    }
+                };
+                img.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+
+            if (photoWidth < 400 || photoHeight < 525) {
+                console.log("PHOTO MUST BE 400 x 525");
+                return;
+            } else {
+                console.log("PHOTO UPLOADED.");
+            }
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>

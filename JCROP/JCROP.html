@@ -36,8 +36,8 @@
 
     <script type="text/javascript">
         const photoCropID = "#cropping-photo";
-        let cropH;
-        let cropW;
+        let cropY2;
+        let cropX2;
         let cropX;
         let cropY;
         let cropMinimal = 70; // in pixels
@@ -81,8 +81,8 @@
                     let paramsObj = $.parseJSON(cropParams);
                     cropY = paramsObj.y;
                     cropX = paramsObj.x;
-                    cropW = paramsObj.width;
-                    cropH = paramsObj.height;
+                    cropX2 = paramsObj.width;
+                    cropY2 = paramsObj.height;
                 } catch (e) {
                     console.error("Invalid CropParams JSON: ", e.message);
                 }
@@ -94,7 +94,7 @@
                 renderedH = img.height;
             };
             $(photoCropID).Jcrop({
-                setSelect: [cropX, cropY, cropW, cropH],
+                setSelect: [cropX, cropY, cropX2, cropY2],
                 allowResize: true,
                 allowMove: true,
                 aspectRatio: cropRatio,
@@ -127,8 +127,8 @@
             } else {
                 cropY = c.y;
                 cropX = c.x;
-                cropW = w;
-                cropH = h;
+                cropX2 = w;
+                cropY2 = h;
                 $("#warningSubmit").hide();
                 $("#btnSubmit").show();
             }
@@ -147,8 +147,8 @@
                 let ratio = (photo.naturalHeight / renderedH).toFixed(3);
                 let croppedX = (cropX * ratio).toFixed();
                 let croppedY = (cropY * ratio).toFixed();
-                let croppedW = (cropW * ratio).toFixed();
-                let croppedH = (cropH * ratio).toFixed();
+                let croppedW = (cropX2 * ratio).toFixed();
+                let croppedH = (cropY2 * ratio).toFixed();
                 if (croppedW > originalW) {
                     croppedW = originalW;
                 }

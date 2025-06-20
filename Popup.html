@@ -6,16 +6,12 @@
     <title>Popup Example</title>
     <style>
         body {
-            align-items: center;
-            display: flex;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            justify-content: center;
-            margin: 0;
-            padding: 0;
+            border-radius: 10px;
+            border: 1px solid lightgray;
+            padding: 200px;
         }
 
-        #popupOverlay {
+        #modal-overlay {
             align-items: center;
             background-color: rgba(0, 0, 0, 0.2);
             display: none;
@@ -27,12 +23,13 @@
             width: 100%;
         }
 
-        #popupBox {
+        #modal-box {
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             padding: 30px;
             text-align: center;
+            user-select: none;
         }
 
         .popup-button {
@@ -41,41 +38,32 @@
             margin: 10px;
             padding: 10px 20px;
         }
-
-        .wrapper {
-            border-radius: 10px;
-            border: 1px solid lightgray;
-            padding: 200px;
-        }
     </style>
 </head>
 
 <body>
-    <div class="wrapper">
-
-        <button id="myBtn">Open Modal</button>
-        <div>
-            <p id="modal-result"></p>
-        </div>
-        <div id="popupOverlay">
-            <div id="popupBox">
-                <h2>Select an Option</h2>
-                <button class="popup-button" onclick="handleChoice('111')">Option 1</button>
-                <button class="popup-button" onclick="handleChoice('222')">Option 2</button>
-            </div>
-        </div>
-
+    <button id="start-btn" class="popup-button">Open Popup</button>
+    <div>
+        <p id="modal-result"></p>
     </div>
-    <script>
-        var modal = document.getElementById("popupOverlay");
+    <div id="modal-overlay">
+        <div id="modal-box">
+            <h2>Select an Option</h2>
+            <button class="popup-button" onclick="handleChoice('111')">Option 1</button>
+            <button class="popup-button" onclick="handleChoice('222')">Option 2</button>
+        </div>
+    </div>
 
-        document.getElementById("myBtn").onclick = function () {
+    <script>
+        var modal = document.getElementById("modal-overlay");
+
+        document.getElementById("start-btn").onclick = function () {
             modal.style.display = "flex";
         }
 
         function handleChoice(option) {
             document.getElementById("modal-result").innerText = "Your choice " + option;
-            document.getElementById('popupOverlay').style.display = 'none';
+            document.getElementById('modal-overlay').style.display = 'none';
         }
     </script>
 

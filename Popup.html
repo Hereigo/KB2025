@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Popup Example</title>
+    <style>
+        body {
+            align-items: center;
+            display: flex;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #popupOverlay {
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: none;
+            height: 100%;
+            justify-content: center;
+            left: 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        #popupBox {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .popup-button {
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+            padding: 10px 20px;
+        }
+
+        .wrapper {
+            border-radius: 10px;
+            border: 1px solid lightgray;
+            padding: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <button id="myBtn">Open Modal</button>
+        <div>
+            <p id="modal-result"></p>
+        </div>
+        <div id="popupOverlay">
+            <div id="popupBox">
+                <h2>Select an Option</h2>
+                <button class="popup-button" onclick="handleChoice('111')">Option 1</button>
+                <button class="popup-button" onclick="handleChoice('222')">Option 2</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var modal = document.getElementById("popupOverlay");
+
+        document.getElementById("myBtn").onclick = function () {
+            modal.style.display = "flex";
+        }
+
+        function handleChoice(option) {
+            document.getElementById("modal-result").innerText = "Your choice " + option;
+            document.getElementById('popupOverlay').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>

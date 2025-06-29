@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7x7 Grid - CSS Grid</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            /* 7 equal columns */
+            width: 100%;
+        }
+
+        .cell {
+            border: 1px solid #ccc;
+            min-height: 100px;
+            padding: 10px;
+        }
+
+        .cell:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid">
+        <div class="cell">Cell 1</div>
+        <div class="cell">Cell 2</div>
+        <div class="cell">Cell 3</div>
+        <div class="cell">Cell 4</div>
+        <div class="cell">Cell 5</div>
+        <div class="cell">Cell 6</div>
+        <div class="cell">Cell 7</div>
+        <div class="cell">Cell 1</div>
+        <div class="cell">Cell 2</div>
+        <div class="cell">Cell 3</div>
+        <div class="cell">Cell 4</div>
+        <div class="cell">Cell 5</div>
+        <div class="cell">Cell 6</div>
+        <div class="cell">Cell 7</div>
+        <div class="cell">Cell 1</div>
+        <div class="cell">Cell 2</div>
+        <div class="cell">Cell 3</div>
+        <div class="cell">Cell 4</div>
+        <div class="cell">Cell 5</div>
+        <div class="cell">Cell 6</div>
+        <div class="cell">Cell 7</div>
+        <div class="cell">Cell 1</div>
+        <div class="cell">Cell 2</div>
+        <div class="cell">Cell 3</div>
+        <div class="cell">Cell 4</div>
+        <div class="cell">Cell 5</div>
+        <div class="cell">Cell 6</div>
+        <div class="cell">Cell 7</div>
+        <div class="cell">Cell 1</div>
+        <div class="cell">Cell 2</div>
+        <div class="cell">Cell 3</div>
+        <div class="cell">Cell 4</div>
+        <div class="cell">Cell 5</div>
+        <div class="cell">Cell 6</div>
+        <div class="cell">Cell 7</div>
+        <div class="cell">Cell 1</div>
+        <div class="cell">Cell 2</div>
+        <div class="cell">Cell 3</div>
+        <div class="cell">Cell 4</div>
+        <div class="cell">Cell 5</div>
+        <div class="cell">Cell 6</div>
+        <div class="cell">Cell 7</div>
+        <div class="cell">Cell 1</div>
+        <div class="cell">Cell 2</div>
+        <div class="cell">Cell 3</div>
+        <div class="cell">Cell 4</div>
+        <div class="cell">Cell 5</div>
+        <div class="cell">Cell 6</div>
+        <div class="cell">Cell 7</div>
+    </div>
+</body>
+
+</html>

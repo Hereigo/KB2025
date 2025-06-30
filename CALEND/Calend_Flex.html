@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7x7 Grid - Flexbox</title>
+    <title>Flexbox</title>
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         html,
@@ -18,185 +20,88 @@
             width: 100%;
         }
 
-        .flex-grid {
+
+        .grid>*:nth-child(7n) {
+            margin-right: 0;
+        }
+
+        .grid>*:nth-child(7n+1) {
+            margin-left: 0;
+        }
+
+        /* ============================================ */
+
+        .grid {
             display: flex;
             flex-wrap: wrap;
             width: 100%;
         }
 
         .cell {
-            width: calc(100% / 7);
-        }
+            width: calc(100% / 7.15);
 
-        .incell {
             border-radius: 5px;
             border: 1px solid #ccc;
             font-size: small;
             margin: 1px 0 0 1px;
             min-height: 100px;
             padding: 3px;
-            width: 100%;
-        }
-
-        .flex-grid>*:nth-child(7n)>.incell {
-            margin-right: 0;
-        }
-
-        .flex-grid>*:nth-child(7n+1)>.incell {
-            margin-left: 0;
+            /* width: 100%; */
         }
     </style>
 </head>
 
 <body>
-    <div class="flex-grid">
-        <div class="cell">
-            <div class="incell">Abra-cadabra 1</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 2</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 3</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 4</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 5</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 6</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 7</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 1</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 2</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 3</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 4</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 5</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 6</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 7</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 1</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 2</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 3</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 4</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 5</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 6</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 7</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 1</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 2</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 3</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 4</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 5</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 6</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 7</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 1</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 2</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 3</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 4</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 5</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 6</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 7</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 1</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 2</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 3</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 4</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 5</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 6</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 7</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 1</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 2</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 3</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 4</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 5</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 6</div>
-        </div>
-        <div class="cell">
-            <div class="incell">Abra-cadabra 7</div>
-        </div>
+    <div class="grid">
+        <div class="cell">Abra-cadabra 1</div>
+        <div class="cell">Abra-cadabra 2</div>
+        <div class="cell">Abra-cadabra 3</div>
+        <div class="cell">Abra-cadabra 4</div>
+        <div class="cell">Abra-cadabra 5</div>
+        <div class="cell">Abra-cadabra 6</div>
+        <div class="cell">Abra-cadabra 7</div>
+        <div class="cell">Abra-cadabra 1</div>
+        <div class="cell">Abra-cadabra 2</div>
+        <div class="cell">Abra-cadabra 3</div>
+        <div class="cell">Abra-cadabra 4</div>
+        <div class="cell">Abra-cadabra 5</div>
+        <div class="cell">Abra-cadabra 6</div>
+        <div class="cell">Abra-cadabra 7</div>
+        <div class="cell">Abra-cadabra 1</div>
+        <div class="cell">Abra-cadabra 2</div>
+        <div class="cell">Abra-cadabra 3</div>
+        <div class="cell">Abra-cadabra 4</div>
+        <div class="cell">Abra-cadabra 5</div>
+        <div class="cell">Abra-cadabra 6</div>
+        <div class="cell">Abra-cadabra 7</div>
+        <div class="cell">Abra-cadabra 1</div>
+        <div class="cell">Abra-cadabra 2</div>
+        <div class="cell">Abra-cadabra 3</div>
+        <div class="cell">Abra-cadabra 4</div>
+        <div class="cell">Abra-cadabra 5</div>
+        <div class="cell">Abra-cadabra 6</div>
+        <div class="cell">Abra-cadabra 7</div>
+        <div class="cell">Abra-cadabra 1</div>
+        <div class="cell">Abra-cadabra 2</div>
+        <div class="cell">Abra-cadabra 3</div>
+        <div class="cell">Abra-cadabra 4</div>
+        <div class="cell">Abra-cadabra 5</div>
+        <div class="cell">Abra-cadabra 6</div>
+        <div class="cell">Abra-cadabra 7</div>
+        <div class="cell">Abra-cadabra 1</div>
+        <div class="cell">Abra-cadabra 2</div>
+        <div class="cell">Abra-cadabra 3</div>
+        <div class="cell">Abra-cadabra 4</div>
+        <div class="cell">Abra-cadabra 5</div>
+        <div class="cell">Abra-cadabra 6</div>
+        <div class="cell">Abra-cadabra 7</div>
+        <div class="cell">Abra-cadabra 1</div>
+        <div class="cell">Abra-cadabra 2</div>
+        <div class="cell">Abra-cadabra 3</div>
+        <div class="cell">Abra-cadabra 4</div>
+        <div class="cell">Abra-cadabra 5</div>
+        <div class="cell">Abra-cadabra 6</div>
+        <div class="cell">Abra-cadabra 7</div>
     </div>
 </body>
 

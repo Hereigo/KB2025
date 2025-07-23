@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>AXIOS Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <div id="wrapper">
+        See Console output.
+    </div>
+
+    <script>
+        const postDataOLD = async () => {
+            try {
+                const response = await axios.post(
+                    'https://api.servicedemo.com/identity/connect/token',
+                    'grant_type=client_credentials&scope=API',
+                    {
+                        auth: {
+                            username: 'APITEST',
+                            password: '99189eceb8ee4c42b603072229f0693c'
+                        }
+                    }
+                );
+                console.log('Response data:', response.data);
+            } catch (error) {
+                console.error('Error posting data:', error);
+            }
+        };
+
+        postData();
+
+    </script>
+</body>
+
+</html>

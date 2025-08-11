@@ -15,15 +15,31 @@
             border-radius: 10px;
             min-height: 200px;
             min-width: 200px;
+            max-width: 50%;
             margin: 3rem;
+            padding: 2rem;
         }
     </style>
 </head>
 
 <body>
     <div class="wrapper">
-
+        <div class="aaa">
+            <form action="/service.html" method="post">
+                <input id="aaa" type="text" name="aaa" />
+                <br />
+                <br />
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
     </div>
+    <script>
+        $("form").on("submit", function (e) {
+            e.preventDefault();
+            $("#aaa").val($("#aaa").val().trim());
+            console.log("Trimmed value - ", $("#aaa").val(), "!!!");
+        });
+    </script>
 </body>
 
 </html>

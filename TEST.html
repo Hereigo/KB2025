@@ -14,13 +14,46 @@
             width: 100vh;
         }
     </style>
+    <style>
+        .icon-button {
+            display: inline-flex;
+            /* Use flex to align icon and text */
+            align-items: center;
+            /* Vertically center icon and text */
+            gap: 0.5em;
+            /* Space between icon and text */
+            padding: 0.5em 1em;
+            /* font-size: 1rem; */
+            border: 1px solid #ccc;
+            max-width: 150px;
+        }
+
+        .icon-button .icon {
+            display: inline-block;
+        }
+
+        .icon-button svg {
+            vertical-align: middle;
+        }
+    </style>
 </head>
 
 <body>
 
     <div id="wrapper">
-        Hello world!
+        <p>
+            Hello world!
+        </p>
     </div>
+
+    <button class="icon-button">
+        <div class="icon">
+            @
+        </div>
+        <div class="text">
+            Blah-blah-blah... button's text
+        </div>
+    </button>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {

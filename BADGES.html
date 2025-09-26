@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vehicle Cards</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            padding: 15px 20px;
+            width: 300px;
+            position: relative;
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #2b5daa;
+        }
+
+        .card p {
+            margin: 5px 0 15px;
+            color: #555;
+        }
+
+        .vehicle-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .tax-status {
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tax-status .left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tax-status .left span:first-child {
+            font-weight: bold;
+            color: #2a7f2e;
+        }
+
+        .valid-badge {
+            background-color: #2a7f2e;
+            color: white;
+            border-radius: 15px;
+            padding: 3px 10px;
+            font-size: 13px;
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .card-buttons button {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card-container">
+        <div class="card">
+            <h3>AB12 CDE</h3>
+            <p>2020 ford Focus</p>
+            <div class="tax-status">
+                <div class="left">
+                    <span>✔ Road Tax</span>
+                    <small>Expires: 2025-08-31</small>
+                </div>
+                <div class="valid-badge">Valid</div>
+            </div>
+            <div class="card-buttons">
+                <button class="transfer">Transfer</button>
+                <button class="edit">Edit</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>AB12 CDE</h3>
+            <p>2020 ford Focus</p>
+            <div class="tax-status">
+                <div class="left">
+                    <span>✔ Road Tax</span>
+                    <small>Expires: 2025-08-31</small>
+                </div>
+                <div class="valid-badge">Valid</div>
+            </div>
+            <div class="card-buttons">
+                <button class="transfer">Transfer</button>
+                <button class="edit">Edit</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>AB12 CDE</h3>
+            <p>2020 ford Focus</p>
+            <div class="tax-status">
+                <div class="left">
+                    <span>✔ Road Tax</span>
+                    <small>Expires: 2025-08-31</small>
+                </div>
+                <div class="valid-badge">Valid</div>
+            </div>
+            <div class="card-buttons">
+                <button class="transfer">Transfer</button>
+                <button class="edit">Edit</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

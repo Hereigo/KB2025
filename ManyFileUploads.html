@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap-4.3.0@1.0.0/dist/js/bootstrap.min.js "></script>
+    <link href=" https://cdn.jsdelivr.net/npm/bootstrap-4.3.0@1.0.0/dist/css/bootstrap.min.css " rel="stylesheet">
+    <style>
+        body {
+            border-radius: 10px;
+            border: 5px solid blue;
+            height: 90vh;
+            margin: 10px;
+            padding: 30px;
+            width: 100vh;
+        }
+
+        #upload-form-wrap {
+            background-color: rgb(192, 191, 191);
+            border-radius: 20px;
+            border: 2px solid black;
+            padding: .5rem 1.3rem;
+            width: 700px;
+        }
+
+        #upload-form-wrap>div {
+            background-color: white;
+            border: 2px solid grey;
+            padding: 1rem;
+        }
+
+        #upload-form p {
+            font-weight: 600;
+        }
+
+        .row {
+            margin-bottom: .5rem;
+        }
+
+        input[type="button"] {
+            padding: 0 15px;
+            width: 130px;
+        }
+
+        input[type="file"] {
+            border-radius: 5px;
+            border: 1px solid black;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <img src="/example.png">
+        <hr />
+        <hr />
+
+        <div id="upload-form-wrap">
+            <div>
+                <form id="upload-form">
+                    <p>
+                        Upload your isurance certificate
+                    </p>
+                    <div class="row">
+                        <div class="col">
+                            <input type="file" />
+                        </div>
+                        <div class="col">
+                            <input type="button" value=" - Remove File " onclick="uploadLineRemove(this)" />
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col">
+                        <input type="button" value=" + Add File " onclick="uploadLineAdd()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const uploadForm = document.getElementById('upload-form');
+
+        function uploadLineAdd() {
+            const newRow = uploadForm.querySelector('.row').cloneNode(true);
+            newRow.querySelector('input[type="file"]').value = '';
+            uploadForm.appendChild(newRow);
+        }
+
+        function uploadLineRemove(button) {
+            var countInputs = uploadForm.querySelectorAll('input[type="file"]').length;
+            var row = button.closest('.row');
+            if (countInputs == 1) {
+                row.querySelector('input[type="file"]').value = '';
+            } else {
+                row.remove();
+            }
+        }
+    </script>
+</body>
+
+</html>

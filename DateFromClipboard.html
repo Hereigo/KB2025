@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Paste Date into Date Input</title>
+</head>
+
+<body>
+    <h2>Paste Date from Clipboard</h2>
+    <button id="pasteBtn">Paste Date</button>
+    <input type="date" id="dateInput">
+
+    <script>
+        // Format date from DD/MM/YYYY or similar to YYYY-MM-DD
+        function formatDateToISO(dateStr) {
+            const cleaned = dateStr.trim().replace(/[\.\-\/]/g, '-'); // Normalize delimiters
+            const parts = cleaned.split('-');
+
+            // Expecting DD-MM-YYYY or D-M-YYYY
+            if (parts.length === 3) {
+                let [day, month, year] = parts.map(p => p.padStart(2, '0'));
+
+                // Handle short year like 99 -> 1999 or 20 -> 2020 (optional logic)
+                if (year.length === 2) {
+                    year = (parseInt(year) > 30 ? '19' : '20') + year;
+                }
+
+                // Basic validation
+                if (year.length === 4 && month <= 12 && day <= 31) {
+                    return `${year}-${month}-${day}`;
+                }
+            }
+
+            return null;
+        }
+
+        document.getElementById('pasteBtn').addEventListener('click', async () => {
+            try {
+                const clipboardText = await navigator.clipboard.readText();
+                const formattedDate = formatDateToISO(clipboardText);
+
+                if (formattedDate) {
+                    document.getElementById('dateInput').value = formattedDate;
+                } else {
+                    alert("Couldn't recognize date format. Please paste in DD/MM/YYYY or similar.");
+                }
+            } catch (err) {
+                alert('Clipboard access failed. Make sure you allow clipboard permissions.');
+                console.error(err);
+            }
+        });
+    </script>
+</body>
+
+</html>

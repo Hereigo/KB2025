@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <style>
+        @font-face {
+            font-family: 'Play';
+            src: url('/fonts/Play-Regular.ttf') format('truetype'),
+                url('/fonts/Play-Bold.ttf') format('truetype');
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Play', sans-serif;
+            font-weight: 400;
+        }
+
+        body {
+            margin: 10px;
+        }
+
+        ul {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>Display Classes</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>d-flex: Makes an element a Flex container.</li>
+                    <li>d-inline-flex: Creates an inline Flex container.</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex">
+                    <div class="p-2 bg-primary text-white">Item 1</div>
+                    <div class="p-2 bg-secondary text-white">Item 2</div>
+                    <div class="p-2 bg-success text-white">Item 3</div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>Flex Direction</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>flex-row: Align items horizontally (default).</li>
+                    <li>flex-row-reverse: Reverse the row direction.</li>
+                    <li>flex-column: Align items vertically.</li>
+                    <li>flex-column-reverse: Reverse the column direction.</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex flex-column">
+                    <div class="p-2 bg-primary text-white">Item 1</div>
+                    <div class="p-2 bg-secondary text-white">Item 2</div>
+                    <div class="p-2 bg-success text-white">Item 3</div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>Justify Content</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>justify-content-start (default)</li>
+                    <li>justify-content-end</li>
+                    <li>justify-content-center</li>
+                    <li>justify-content-between</li>
+                    <li>justify-content-around</li>
+                    <li>justify-content-evenly</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-between">
+                    <div class="p-2 bg-primary text-white">Item 1</div>
+                    <div class="p-2 bg-secondary text-white">Item 2</div>
+                    <div class="p-2 bg-success text-white">Item 3</div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>Align Self</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>align-self-start</li>
+                    <li>align-self-end</li>
+                    <li>align-self-center</li>
+                    <li>align-self-baseline</li>
+                    <li>align-self-stretch (default)</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex">
+                    <div class="p-2 bg-primary text-white align-self-start">Item 1</div>
+                    <div class="p-2 bg-secondary text-white align-self-center">Item 2</div>
+                    <div class="p-2 bg-success text-white align-self-end">Item 3</div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>Flex Grow</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>flex-grow-0: Prevent growth.</li>
+                    <li>flex-grow-1: Allow growth.</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex">
+                    <div class="p-2 bg-primary text-white flex-grow-1">Grow Item</div>
+                    <div class="p-2 bg-secondary text-white">Static Item</div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>Flex Shrink</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>flex-shrink-0: Prevent shrinking.</li>
+                    <li>flex-shrink-1: Allow shrinking.</li>
+                </ul>
+                (Enable wrapping of items with flex-wrap or flex-nowrap.)
+            </div>
+            <div class="card-footer">
+                <div class="d-flex flex-wrap">
+                    <div class="p-2 bg-primary text-white">Item 1</div>
+                    <div class="p-2 bg-secondary text-white">Item 2</div>
+                    <div class="p-2 bg-success text-white">Item 3</div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>Flex Order</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>order-0 (default)</li>
+                    <li>order-1, order-2, … (higher numbers appear later)</li>
+                    <li>order-last: Places the item last.</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex">
+                    <div class="p-2 bg-primary text-white order-3">Item 1</div>
+                    <div class="p-2 bg-secondary text-white order-1">Item 2</div>
+                    <div class="p-2 bg-success text-white order-2">Item 3</div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>Gap Utilities</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Bootstrap 5 introduces the gap-{size} utility for adding spacing between Flex items.</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex gap-3">
+                    <div class="p-2 bg-primary text-white">Item 1</div>
+                    <div class="p-2 bg-secondary text-white">Item 2</div>
+                    <div class="p-2 bg-success text-white">Item 3</div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3>Combining Flex Utilities</h3>
+            </div>
+            <div class="card-body">
+                <ul>
+                    <li>Example: Responsive Navigation Bar</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <nav class="d-flex justify-content-between align-items-center bg-dark text-white p-3">
+                    <div>Logo</div>
+                    <ul class="d-flex list-unstyled mb-0">
+                        <li class="px-3">Home</li>
+                        <li class="px-3">About</li>
+                        <li class="px-3">Contact</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // ...
+
+        });
+    </script>
+</body>
+
+</html>

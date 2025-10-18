@@ -28,41 +28,42 @@
 
 <body class="bg-light">
     <div class="container">
+
         <div class="row">
 
             <div class="col-md-4">
 
-                <h4>justify-content</h4>
+                <h4>justify-content (H)</h4>
 
-                <h6>flex-start</h6>
+                <h6>justify-content-start</h6>
                 <div class="demo d-flex justify-content-start">
                     <div class="p-4 bg-primary"></div>
                     <div class="p-4 bg-warning"></div>
                     <div class="p-4 bg-success"></div>
                 </div>
 
-                <h6>flex-end</h6>
+                <h6>justify-content-end</h6>
                 <div class="demo d-flex justify-content-end">
                     <div class="p-4 bg-primary"></div>
                     <div class="p-4 bg-warning"></div>
                     <div class="p-4 bg-success"></div>
                 </div>
 
-                <h6>center</h6>
+                <h6>justify-content-center</h6>
                 <div class="demo d-flex justify-content-center">
                     <div class="p-4 bg-primary"></div>
                     <div class="p-4 bg-warning"></div>
                     <div class="p-4 bg-success"></div>
                 </div>
 
-                <h6>space-between</h6>
+                <h6>justify-content-between</h6>
                 <div class="demo d-flex justify-content-between">
                     <div class="p-4 bg-primary"></div>
                     <div class="p-4 bg-warning"></div>
                     <div class="p-4 bg-success"></div>
                 </div>
 
-                <h6>space-evenly</h6>
+                <h6>justify-content-evenly</h6>
                 <div class="demo d-flex justify-content-evenly">
                     <div class="p-4 bg-primary"></div>
                     <div class="p-4 bg-warning"></div>
@@ -73,37 +74,38 @@
 
             <div class="col-md-4">
 
-                <h4>align-items</h4>
+                <h4>align-items (V)</h4>
 
-                <h6>flex-start</h6>
+                <h6>align-items-start</h6>
+
                 <div class="demo d-flex align-items-start">
                     <div class="p-4 bg-primary"></div>
-                    <div class="p-4 bg-warning"></div>
+                    <div class="p-4 bg-warning p-5"></div>
                     <div class="p-4 bg-success"></div>
                 </div>
 
-                <h6>flex-end</h6>
+                <h6>align-items-end</h6>
                 <div class="demo d-flex align-items-end">
                     <div class="p-4 bg-primary"></div>
                     <div class="p-4 bg-warning"></div>
                     <div class="p-4 bg-success"></div>
                 </div>
 
-                <h6>stretch</h6>
+                <h6>align-items-stretch</h6>
                 <div class="demo d-flex align-items-stretch">
                     <div class="p-4 bg-primary"></div>
                     <div class="p-4 bg-warning"></div>
                     <div class="p-4 bg-success"></div>
                 </div>
 
-                <h6>baseline</h6>
+                <h6>align-items-baseline</h6>
                 <div class="demo d-flex align-items-baseline">
                     <div class="p-4 bg-primary"></div>
-                    <div class="p-4 bg-warning"></div>
+                    <div class="p-4 bg-warning p-5"></div>
                     <div class="p-4 bg-success"></div>
                 </div>
 
-                <h6>center</h6>
+                <h6>align-items-center</h6>
                 <div class="demo d-flex align-items-center">
                     <div class="p-4 bg-primary"></div>
                     <div class="p-4 bg-warning"></div>
@@ -116,18 +118,39 @@
 
                 <h4>align-self</h4>
 
-                <h6>flex-start / center / flex-end</h6>
+                <h6>-self-start / -self-center / -end</h6>
                 <div class="demo d-flex">
                     <div class="p-4 bg-primary align-self-start"></div>
                     <div class="p-4 bg-warning align-self-center"></div>
                     <div class="p-4 bg-success align-self-end"></div>
                 </div>
 
-                <h6>stretch / baseline / center</h6>
+                <h6>-self-center / ..-stretch / ..-end</h6>
                 <div class="demo d-flex">
-                    <div class="p-4 bg-primary align-self-stretch"></div>
-                    <div class="p-4 bg-warning align-self-baseline"></div>
-                    <div class="p-4 bg-success align-self-center"></div>
+                    <div class="p-4 bg-primary align-self-center"></div>
+                    <div class="p-4 bg-warning align-self-stretch"></div>
+                    <div class="p-4 bg-success align-self-end"></div>
+                </div>
+
+                <h6>-self-end / ..-baseline / ..-end</h6>
+                <div class="demo d-flex">
+                    <div class="p-4 bg-primary align-self-end"></div>
+                    <div class="p-4 bg-warning align-self-baseline p-5"></div>
+                    <div class="p-4 bg-success align-self-end"></div>
+                </div>
+
+                <h6>-baseline / -center / -baseline</h6>
+                <div class="demo d-flex">
+                    <div class="p-4 bg-primary align-self-baseline"></div>
+                    <div class="p-4 bg-warning align-self-center p-5"></div>
+                    <div class="p-4 bg-success align-self-baseline"></div>
+                </div>
+
+                <h6>-self-start / ..-end / ..-baseline</h6>
+                <div class="demo d-flex">
+                    <div class="p-4 bg-primary align-self-start"></div>
+                    <div class="p-4 bg-warning align-self-end p-5"></div>
+                    <div class="p-4 bg-success align-self-baseline"></div>
                 </div>
 
             </div>

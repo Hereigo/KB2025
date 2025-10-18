@@ -1,41 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alignment in CSS with Bootstrap 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
-        body {
-            border-radius: 10px;
-            border: 5px solid blue;
-            height: 90vh;
-            margin: 10px;
-            padding: 30px;
-            width: 100vh;
+        .box {
+            width: 40px;
+            height: 40px;
+        }
+
+        .demo {
+            border: 1px solid #ccc;
+            height: 100px;
+            width: 180px;
+            margin: 0 .5rem 0 1rem;
+            background-color: #fff;
         }
     </style>
 </head>
 
-<body>
-    <div id="wrapper">
-        <h3>
-            Hello world!
-        </h3>
+<body class="p-4 bg-light">
+    <div class="container text-center">
 
-        (Expandable section)
-        <toggle-tip title="Change of address" content="The change of address is only possible if... (some more text)" />
-        (a more complex example)
-        <toggle-tip title="@Model.InputName" content="@Model.HelperText" use-html-raw=Model.UseHtmlRawForHelperText
-            additional-css-classes="ms-2" />
+        <h3 class="mb-4">Alignment in CSS</h3>
 
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <h4>justify-content</h4>
+
+                <p>flex-start</p>
+                <div class="demo d-flex justify-content-start">
+                    <div class="box bg-primary"></div>
+                    <div class="box bg-warning"></div>
+                    <div class="box bg-success"></div>
+                </div>
+
+                <p>flex-end</p>
+                <div class="demo d-flex justify-content-end">
+                    <div class="box bg-primary"></div>
+                    <div class="box bg-warning"></div>
+                    <div class="box bg-success"></div>
+                </div>
+
+                <p>center</p>
+                <div class="demo d-flex justify-content-center">
+                    <div class="box bg-primary"></div>
+                    <div class="box bg-warning"></div>
+                    <div class="box bg-success"></div>
+                </div>
+
+                <p>space-between</p>
+                <div class="demo d-flex justify-content-between">
+                    <div class="box bg-primary"></div>
+                    <div class="box bg-warning"></div>
+                    <div class="box bg-success"></div>
+                </div>
+
+                <p>space-evenly</p>
+                <div class="demo d-flex justify-content-evenly">
+                    <div class="box bg-primary"></div>
+                    <div class="box bg-warning"></div>
+                    <div class="box bg-success"></div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h4>align-items</h4>
+
+                <p>flex-start</p>
+                <div class="demo d-flex align-items-start">
+                    <div class="box bg-primary"></div>
+                    <div class="box bg-warning"></div>
+                    <div class="box bg-success"></div>
+                </div>
+
+                <p>flex-end</p>
+                <div class="demo d-flex align-items-end">
+                    <div class="box bg-primary"></div>
+                    <div class="box bg-warning"></div>
+                    <div class="box bg-success"></div>
+                </div>
+
+                <p>stretch</p>
+                <div class="demo d-flex align-items-stretch">
+                    <div class="box bg-primary w-25"></div>
+                    <div class="box bg-warning w-25"></div>
+                    <div class="box bg-success w-25"></div>
+                </div>
+
+                <p>baseline</p>
+                <div class="demo d-flex align-items-baseline">
+                    <div class="box bg-primary"></div>
+                    <div class="box bg-warning"></div>
+                    <div class="box bg-success"></div>
+                </div>
+
+                <p>center</p>
+                <div class="demo d-flex align-items-center">
+                    <div class="box bg-primary"></div>
+                    <div class="box bg-warning"></div>
+                    <div class="box bg-success"></div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <h4>align-self</h4>
+
+                <p>flex-start / flex-end / center</p>
+                <div class="demo d-flex">
+                    <div class="box bg-primary align-self-start"></div>
+                    <div class="box bg-warning align-self-center"></div>
+                    <div class="box bg-success align-self-end"></div>
+                </div>
+
+                <p>stretch / baseline / center</p>
+                <div class="demo d-flex">
+                    <div class="box bg-primary align-self-stretch w-25"></div>
+                    <div class="box bg-warning align-self-baseline"></div>
+                    <div class="box bg-success align-self-center"></div>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
 
-            // ...
-
-        });
-    </script>
 </body>
 
 </html>

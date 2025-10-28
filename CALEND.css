@@ -1,15 +1,15 @@
-/* html, */
-body {
-    overflow-y: hidden;
-}
-
 body {
     display: flex;
     flex-direction: column;
+    overflow-y: hidden;
 }
 
 .navbar {
-    padding: 0 !important;
+    padding: .1rem !important;
+}
+
+#navbarNav>input[type=text] {
+    margin: .1rem !important;
 }
 
 .grid-head {

@@ -11,7 +11,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">My Web Page</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -47,6 +47,7 @@
 
     <script>
         $(document).ready(function () {
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
             const divs = [];
             for (let i = 1; i <= 49; i++) {
                 var cellText = 'Cell ' + i;
@@ -55,7 +56,7 @@
                 }
 
                 if (i <= 7) {
-                    divs.push($('<div>').addClass('grid-head').text(cellText));
+                    divs.push($('<div>').addClass('grid-head').text(days[i - 1]));
                 } else {
                     divs.push($('<div>').addClass('grid-cell').text(cellText));
                 }

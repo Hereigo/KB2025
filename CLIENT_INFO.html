@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>See console =)</h2>
+    <script>
+        // Returns a Promise resolving to a plain object with the discovered client info.
+        async function collectClientInfo() {
+            const info = {};
+
+            // Basic navigator / UA
+            info.userAgent = navigator.userAgent;
+            info.platform = navigator.platform || null;
+            info.product = navigator.product || null;
+            info.vendor = navigator.vendor || null;
+            info.appName = navigator.appName || null;
+            info.appVersion = navigator.appVersion || null;
+            info.languages = navigator.languages || [navigator.language];
+            try {
+                info.timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            } catch (e) {
+                info.timeZone = null;
+            }
+
+            // Screen/display
+            info.screen = {
+                width: screen.width,
+                height: screen.height,
+                availWidth: screen.availWidth,
+                availHeight: screen.availHeight,
+                colorDepth: screen.colorDepth,
+                pixelDepth: screen.pixelDepth
+            };
+
+            // Window size (viewport)
+            info.viewport = { innerWidth: innerWidth, innerHeight: innerHeight };
+
+            // Hardware capabilities
+            info.hardwareConcurrency = navigator.hardwareConcurrency || null; // CPU cores (approx)
+            info.deviceMemory = navigator.deviceMemory || null; // GB (may be undefined)
+            info.touchSupport =
+                ('ontouchstart' in window) ||
+                (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+
+            // Connection (may be undefined in some browsers)
+            info.connection = (navigator.connection && {
+                effectiveType: navigator.connection.effectiveType,
+                downlink: navigator.connection.downlink,
+                rtt: navigator.connection.rtt,
+                saveData: navigator.connection.saveData
+            }) || null;
+
+            // Cookies, storage availability
+            info.cookiesEnabled = navigator.cookieEnabled;
+            info.localStorage = (() => {
+                try { localStorage.setItem('__test', '1'); localStorage.removeItem('__test'); return true; }
+                catch (e) { return false; }
+            })();
+            info.sessionStorage = (() => {
+                try { sessionStorage.setItem('__test', '1'); sessionStorage.removeItem('__test'); return true; }
+                catch (e) { return false; }
+            })();
+            info.indexedDB = (typeof indexedDB !== 'undefined');
+
+            // Plugins & mimeTypes (limited usefulness, browsers reduce exposure)
+            try {
+                info.plugins = Array.from(navigator.plugins || []).map(p => p.name).slice(0, 20);
+                info.mimeTypes = Array.from(navigator.mimeTypes || []).map(m => m.type).slice(0, 20);
+            } catch (e) {
+                info.plugins = null; info.mimeTypes = null;
+            }
+
+            // Performance timing / navigation info
+            try {
+                const nav = performance.getEntriesByType('navigation')[0] || performance.timing;
+                info.performanceTiming = {
+                    // pick a few useful metrics (may differ across browsers)
+                    navigationStart: nav.navigationStart || null,
+                    loadEventEnd: nav.loadEventEnd || null,
+                    domContentLoadedEventEnd: nav.domContentLoadedEventEnd || null
+                };
+            } catch (e) {
+                info.performanceTiming = null;
+            }
+
+            // Canvas fingerprinting sample (data URL) — may vary each run and can be blocked
+            try {
+                const canv = document.createElement('canvas');
+                canv.width = 200; canv.height = 60;
+                const ctx = canv.getContext('2d');
+                // draw text/shapes for fingerprint entropy
+                ctx.textBaseline = "top";
+                ctx.font = "16px 'Arial'";
+                ctx.fillStyle = "#f60";
+                ctx.fillRect(0, 0, 200, 60);
+                ctx.fillStyle = "#069";
+                ctx.fillText("Fingerprint test: 𝕏 𝔸", 2, 2);
+                ctx.fillStyle = "rgba(102, 204, 0, 0.7)";
+                ctx.fillText("◧♦♣", 10, 20);
+                info.canvasDataURL = canv.toDataURL(); // large string - can hash server-side
+            } catch (e) {
+                info.canvasDataURL = null;
+            }
+
+            // WebGL renderer info
+            try {
+                const gl = document.createElement('canvas').getContext('webgl') ||
+                    document.createElement('canvas').getContext('experimental-webgl');
+                if (gl) {
+                    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                    info.webgl = {
+                        vendor: debugInfo ? gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL) : null,
+                        renderer: debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : null
+                    };
+                } else {
+                    info.webgl = null;
+                }
+            } catch (e) {
+                info.webgl = null;
+            }
+
+            // Battery API (may be unsupported/deprecated in some browsers)
+            try {
+                if (navigator.getBattery) {
+                    const b = await navigator.getBattery();
+                    info.battery = {
+                        charging: b.charging,
+                        chargingTime: b.chargingTime,
+                        dischargingTime: b.dischargingTime,
+                        level: b.level
+                    };
+                } else {
+                    info.battery = null;
+                }
+            } catch (e) {
+                info.battery = null;
+            }
+
+            // Permissions state for some APIs (no sensitive data; just permission statuses)
+            try {
+                if (navigator.permissions && navigator.permissions.query) {
+                    const perms = ['geolocation', 'notifications', 'camera', 'microphone', 'clipboard-read', 'clipboard-write'];
+                    info.permissions = {};
+                    for (const p of perms) {
+                        try {
+                            const res = await navigator.permissions.query({ name: p }).catch(() => null);
+                            info.permissions[p] = res ? res.state : 'unknown';
+                        } catch (err) {
+                            info.permissions[p] = 'unavailable';
+                        }
+                    }
+                }
+            } catch (e) {
+                info.permissions = null;
+            }
+
+            // Storage usage estimate
+            try {
+                if (navigator.storage && navigator.storage.estimate) {
+                    info.storageEstimate = await navigator.storage.estimate();
+                }
+            } catch (e) {
+                info.storageEstimate = null;
+            }
+
+            // Plugins/Media devices enumeration (requires secure context; enumerating labels may require permission)
+            try {
+                if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+                    const devs = await navigator.mediaDevices.enumerateDevices();
+                    info.mediaDevices = devs.map(d => ({ kind: d.kind, label: d.label || null, deviceId: d.deviceId }));
+                } else {
+                    info.mediaDevices = null;
+                }
+            } catch (e) {
+                info.mediaDevices = null;
+            }
+
+            // fingerprint libraries sometimes include more features; you can hash canvasDataURL & other features server-side
+            return info;
+        }
+
+        collectClientInfo().then(info => {
+            console.log(info);
+        });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocomplete Change Handling</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+
+<body>
+
+    <input id="autocomplete" type="text" placeholder="Start typing...">
+
+    <script>
+        $(document).ready(function () {
+            // Sample data for autocomplete
+            const availableTags = [
+                "Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape"
+            ];
+
+            // Initialize autocomplete
+            $("#autocomplete").autocomplete({
+                source: availableTags
+            });
+
+            // Listen for the "change" event on the input element
+            $("#autocomplete").on("change", function (event) {
+                const value = $(this).val();
+                console.log("Input value changed to: ", value);
+            });
+
+            // Listen for the "select" event (fired when an item is selected from the list)
+            $("#autocomplete").on("autocompleteselect", function (event, ui) {
+                console.log("Selected item: ", ui.item.value);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

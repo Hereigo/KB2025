@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Collapse</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <button class="btn btn-primary" id="toggleButton">Toggle Content</button>
+
+        <div id="collapsibleDiv" class="collapse mt-3">
+            <div class="p-3 border bg-light">
+                This content is collapsible.
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function toggleCollapseBasedOnWidth() {
+            const collapsibleDiv = document.getElementById('collapsibleDiv');
+            const screenWidth = window.innerWidth;
+
+            if (screenWidth < 768) {  // MOBILE Auto collapse
+                new bootstrap.Collapse(collapsibleDiv, { toggle: false }); // Do not toggle, just collapse
+                collapsibleDiv.classList.add('collapse');
+            } else {
+                // Automatically expand on larger screens
+                new bootstrap.Collapse(collapsibleDiv, { toggle: true }); // Toggle to make sure it's visible
+                collapsibleDiv.classList.remove('collapse');
+            }
+        }
+
+        // Initial check when the page loads
+        toggleCollapseBasedOnWidth();
+
+        // Listen for window resizing
+        window.addEventListener('resize', toggleCollapseBasedOnWidth);
+
+        // Optional: You can also toggle collapse with the button (for testing)
+        document.getElementById('toggleButton').addEventListener('click', function () {
+            const collapsibleDiv = document.getElementById('collapsibleDiv');
+            new bootstrap.Collapse(collapsibleDiv).toggle();
+        });
+    </script>
+
+</body>
+
+</html>

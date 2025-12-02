@@ -30,25 +30,23 @@
                 const screenWidth = $(window).width();
 
                 if (screenWidth < 768) {
-                    $collapsibleDiv.collapse('hide');  // Hide the collapsible div if screen width is less than 768px
-                    $collapsibleDiv.addClass('collapse');  // Ensure it's collapsed visually
+                    $collapsibleDiv.collapse('hide');
+                    $collapsibleDiv.addClass('collapse');
                 } else {
-                    $collapsibleDiv.collapse('show');  // Show the collapsible div if screen width is greater than or equal to 768px
-                    $collapsibleDiv.removeClass('collapse');  // Remove the collapse class to make it visible
+                    $collapsibleDiv.collapse('show');
+                    $collapsibleDiv.removeClass('collapse');
                 }
             }
 
-            toggleCollapseBasedOnWidth();  // Initial call to set the correct state based on the current width
+            toggleCollapseBasedOnWidth();
 
-            // Listen for window resizing to toggle collapse state accordingly
             $(window).resize(function () {
                 toggleCollapseBasedOnWidth();
             });
 
-            // Toggle collapse on button click
             $('#toggleButton').click(function () {
                 const $collapsibleDiv = $('#collapsibleDiv');
-                $collapsibleDiv.collapse('toggle');  // Toggle collapse state when button is clicked
+                $collapsibleDiv.collapse('toggle');
             });
         });
 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Light/Dark Example</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Optional: extra visual polish */
+        body {
+            padding: 2rem;
+        }
+
+        .table-container {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .table-container {
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mb-4">Bootstrap Light/Dark Responsive Page</h1>
+
+        <p class="lead">
+            This is a simple example showing how Bootstrap 5 automatically adapts
+            to your browser’s light or dark theme. The table below stays readable
+            and visually balanced in both modes.
+        </p>
+
+        <li class="nav-item align-items-center d-flex">
+            <i class="fas fa-sun"></i>
+            <div class="ms-2 form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="themingSwitcher" />
+            </div>
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <div class="table-container mt-4">
+            <table class="table table-striped table-hover mb-0">
+                <thead class="table-primary">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Alice</td>
+                        <td>Developer</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Bob</td>
+                        <td>Designer</td>
+                        <td>On Leave</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Charlie</td>
+                        <td>Project Manager</td>
+                        <td>Active</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const html = document.documentElement;
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.setAttribute('data-bs-theme', savedTheme);
+        }
+        const themeStitcher = document.getElementById("themingSwitcher");
+        themeStitcher.addEventListener("change", (e) => {
+            let currentTheme = html.getAttribute('data-bs-theme');
+            // If "auto" or "light", go dark; otherwise go light
+            let newTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            html.setAttribute('data-bs-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+    </script>
+
+
+</body>
+
+</html>

@@ -1,9 +1,14 @@
 @+5owBO8DY3HlkYjli
 @+Ps18jbiLFu4zNWJi
 @+rh-lwuTbnf00ZjIy
+@dataScience4
 @django_pythonl
+@dsabooks
+@learnPython3
 @pro_python_code
 @programming_books_it
+@python53
+@python_code_ua
 @python_djangojobs
 @python_job_interview
 @python_ready

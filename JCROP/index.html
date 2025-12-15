@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jcrop Example</title>
+  <link rel="stylesheet" href="/dist/jquery.Jcrop.min.css">
+</head>
+
+<body>
+  <img id="target" alt="image for cropping" src="picture.jpg" />
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="></script>
+
+  <script src="/dist/jquery.Jcrop.min.js"></script>
+
+  <script>
+    var jcp;
+    x = 20;
+    y = 20;
+    w = 400;
+    h = 200;
+
+    $(document).ready(function () {
+      $('#target').Jcrop({
+        setSelect: [x, y, w, h],
+        allowResize: true,
+        allowMove: true,
+        // aspectRatio: 2,
+        // onChange: someFunction,
+        onSelect: updateCropParams
+      }, function () {
+        jcrop_api = this;
+      });
+
+    });
+
+    function CropDisable() {
+      if (jcrop_api) {
+        jcrop_api.destroy();
+      }
+      if (jcrop_api) {
+        jcrop_api = null;
+      }
+      $(photoCropID).removeAttr('style');
+    }
+
+    function updateCropParams(c) {
+      console.log('before-update: ', x, y, w, h);
+      x = c.x;
+      y = c.y;
+      w = c.w;
+      h = c.h;
+      console.log('after-update: ', x, y, w, h);
+    }
+  </script>
+</body>
+
+</html>

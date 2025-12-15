@@ -5,26 +5,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jcrop Example</title>
-  <link rel="stylesheet" href="/dist/jquery.Jcrop.min.css">
+  <link rel="stylesheet" href="./dist/jquery.Jcrop.min.css">
 </head>
 
 <body>
-  <img id="target" alt="image for cropping" src="picture.jpg" />
+  <img id="target" alt="image for cropping" src="./picture.jpg" />
 
   <script src="https://code.jquery.com/jquery-1.12.4.min.js" crossorigin="anonymous"
     integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="></script>
 
-  <script src="/dist/jquery.Jcrop.min.js"></script>
+  <script src="./dist/jquery.Jcrop.min.js"></script>
 
   <script>
-    var jcp;
     x = 20;
     y = 20;
     w = 400;
     h = 200;
+    let photoCropID = "#target";
+    let jcrop_api;
+    let renderedH;
+    let renderedW;
 
     $(document).ready(function () {
-      $('#target').Jcrop({
+      CropEnable();
+    });
+
+    function CropEnable() {
+      if (jcrop_api) {
+        jcrop_api.destroy();
+      }
+      $(photoCropID).Jcrop({
         setSelect: [x, y, w, h],
         allowResize: true,
         allowMove: true,
@@ -33,9 +43,10 @@
         onSelect: updateCropParams
       }, function () {
         jcrop_api = this;
+        renderedH = $(photoCropID).height();
+        renderedW = $(photoCropID).width();
       });
-
-    });
+    }
 
     function CropDisable() {
       if (jcrop_api) {
@@ -45,6 +56,11 @@
         jcrop_api = null;
       }
       $(photoCropID).removeAttr('style');
+    }
+
+    function calcAspectRatio(width, height) {
+      return (isNaN(width) || isNaN(height)) ? null
+        : Number((width / height).toFixed(2))
     }
 
     function updateCropParams(c) {

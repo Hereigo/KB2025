@@ -95,16 +95,19 @@ Dbx:books_ready
 Dbx:cs_dotnet_core
 Dbx:csharpproglib
 Dbx:devs_library
+Dev:bintree
 Dbx:dotnetbooks
 Dbx:interviewBooks
 Dbx:programmer_archive
 Dbx:programming_books_it
 Dbx:recura_tech
+Dbx:the_coding_space
 Dev:backendPortal
 Dev:backend_ready
 Dev:coding_learning1
 Dev:computer_science_and_programming
 Dev:courseguy_udemy
+Dev:cucadmiH
 Dev:data_ready
 Dev:devs_stash
 Dev:git_developer
@@ -131,7 +134,9 @@ Lin:linux_live
 Lin:linux_read
 Lin:linux_ready
 Lin:linux_sup
+Lin:linux_ukraine
 Lin:linuxacademiya
+Lin:linuxat
 Lin:linuxcamp_tg
 Lin:linuxmint_com
 Lin:linuxmint_ua
@@ -158,6 +163,7 @@ Net:epeshkblog
 Net:kodBlog
 Net:netDeveloperDiary
 Net:netquiz
+Net:yeahub_c_sharp_dev
 Sec:+i__6ED-eRfkwOTYy
 Sec:cybersec_academy
 Sec:cybersecinform
@@ -171,8 +177,11 @@ Sql:sqlPortal
 Sql:sql_lib
 Sql:sql_ready
 Sql:sqlhub
+Web:+ddEaA1IKrK1jMjYy - U don't know JS
 Web:+geILoz4FO5xiNzI6
+Web:+my7itn9CGMplOTAy - JavaScripter
 Web:about_javascript
+Web:codedamn
 Web:frontend_ready
 Web:frontendbooksit
 Web:hashdev
@@ -188,4 +197,7 @@ Web:webDev201
 Web:webDev_plus
 Web:webDev_trainings
 Web:webDevcoursefree
+Web:yeahub_frontend
+Web:yeahub_node_backend
+Xtr:gram_Channels
 Xtr:itchannels_telegram

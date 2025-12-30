@@ -6,36 +6,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <style>
-        .col-md-4,
-        .col-sm-4,
-        .col-xs-4 {
-            background-color: lightblue;
-            border: 1px solid black;
-            height: 100px;
+        .columns-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .column {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            min-width: 150px;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="row">
-            <!-- First Column -->
-            <div class="col-xs-4">
-                <!-- Content for the first column -->
-            </div>
-
-            <!-- Second Column -->
-            <div class="col-xs-4">
-                <!-- Content for the second column -->
-            </div>
-
-            <!-- Third Column -->
-            <div class="col-xs-4">
-                <!-- Content for the third column -->
-            </div>
+        <ul id="phone-list" class="phone-list">
+            <!-- Phone numbers will be inserted here dynamically -->
+        </ul>
+        <div id="columns-container" class="columns-container">
+            <!-- The columns will be added here -->
         </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            // List of phone numbers (this can be dynamic)
+            var phoneNumbers = [
+                '123-456-7890', '987-654-3210', '555-123-4567', '111-222-3333',
+                '444-555-6666', '777-888-9999', '555-666-7777', '888-999-0000',
+                '123-000-1111', '222-333-4444', '555-123-0000', '666-777-8888',
+                '123-456-7890', '987-654-3210', '555-123-4567', '111-222-3333',
+                '444-555-6666', '777-888-9999'
+            ];
+
+            function distributePhoneNumbers() {
+                var numColumns = 4;
+                var columnItems = Math.ceil(phoneNumbers.length / numColumns); // Round up to distribute evenly
+
+                // Clear any existing columns
+                $('#columns-container').empty();
+
+                var currentColumnIndex = 0;
+                for (var i = 0; i < numColumns; i++) {
+                    var $column = $('<div class="column"></div>');
+                    var startIndex = i * columnItems;
+                    var endIndex = startIndex + columnItems;
+                    var columnPhoneNumbers = phoneNumbers.slice(startIndex, endIndex);
+                    columnPhoneNumbers.forEach(function (number) {
+                        $column.append('<p>' + number + '</p>');
+                    });
+                    $('#columns-container').append($column);
+                }
+            }
+
+            distributePhoneNumbers();
+
+            // Optionally, you can call this function again to re-distribute the list if it changes
+            // For example, if phoneNumbers changes later, call distributePhoneNumbers();
+        });
+    </script>
 
 </body>
 

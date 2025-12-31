@@ -20,44 +20,48 @@
 <body>
     <div class="container">
         <div id="dash-all-plates"> ALL
-            <a href="#" id="regPlatesShowLink">SHOW REG</a>
-            <a href="#" id="tradePlatesShowLink">SHOW TRADE</a>
+            <a href="#" class="show-plates-link" data-target="reg">SHOW REG</a>
+            <a href="#" class="show-plates-link" data-target="trade">SHOW TRADE</a>
         </div>
         <div id="dash-reg-plates" style="display: none;"> REG
-            <a href="#" id="regPlatesHideLink">SHOW ALL</a>
+            <a href="#" class="show-plates-link" data-target="reg">SHOW ALL</a>
         </div>
         <div id="dash-trade-plates" style="display: none;"> TRADE
-            <a href="#" id="tradePlatesHideLink">SHOW ALL</a>
+            <a href="#" class="show-plates-link" data-target="trade">SHOW ALL</a>
+        </div>
+        <hr />
+        <hr />
+        <div id="dash-full-page"> FULL
+            <a href="#" class="show-page-link" data-target="retained">SHOW RETAINED</a>
+        </div>
+        <div id="dash-retained-page" style="display: none;"> RETAINED
+            <a href="#" class="show-page-link" data-target="full">SHOW FULL</a>
         </div>
     </div>
     <script>
         $(document).ready(function () {
-            function regPlatesToggle() {
-                $('#dash-reg-plates').toggle();
+            function togglePlates(target) {
+                $('#dash-' + target + '-plates').toggle();
                 $('#dash-all-plates').toggle();
             }
-            $('#regPlatesShowLink').on('click', function (event) {
+            $(document).on('click', '.show-plates-link', function (event) {
                 event.preventDefault();
-                regPlatesToggle();
+                const target = $(this).data('target');
+                togglePlates(target);
             });
-            $('#regPlatesHideLink').on('click', function (event) {
-                event.preventDefault();
-                regPlatesToggle();
-            });
-            function tradePlatesToggle() {
-                $('#dash-trade-plates').toggle();
-                $('#dash-all-plates').toggle();
+
+            function togglePages(target) {
+                $('#dash-full-page').toggle();
+                $('#dash-retained-page').toggle();
             }
-            $('#tradePlatesShowLink').on('click', function (event) {
+            $(document).on('click', '.show-page-link', function (event) {
                 event.preventDefault();
-                tradePlatesToggle();
-            });
-            $('#tradePlatesHideLink').on('click', function (event) {
-                event.preventDefault();
-                tradePlatesToggle();
+                const target = $(this).data('target');
+                togglePages(target);
             });
         });
     </script>
+
 </body>
 
 </html>

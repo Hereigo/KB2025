@@ -19,15 +19,15 @@
 
 <body>
     <div class="container">
-        <div id="dash-all-plates"> ALL
-            <a href="#" class="show-plates-link" data-target="reg">SHOW REG</a>
-            <a href="#" class="show-plates-link" data-target="trade">SHOW TRADE</a>
+        <div id="dash-all-page"> ALL
+            <a href="#" class="show-page-link" data-target="reg">SHOW REG</a>
+            <a href="#" class="show-page-link" data-target="trade">SHOW TRADE</a>
         </div>
-        <div id="dash-reg-plates" style="display: none;"> REG
-            <a href="#" class="show-plates-link" data-target="reg">SHOW ALL</a>
+        <div id="dash-reg-page" style="display: none;"> REG
+            <a href="#" class="show-page-link" data-target="reg">SHOW ALL</a>
         </div>
-        <div id="dash-trade-plates" style="display: none;"> TRADE
-            <a href="#" class="show-plates-link" data-target="trade">SHOW ALL</a>
+        <div id="dash-trade-page" style="display: none;"> TRADE
+            <a href="#" class="show-page-link" data-target="trade">SHOW ALL</a>
         </div>
         <hr />
         <hr />
@@ -41,23 +41,21 @@
     <script>
         $(document).ready(function () {
             function togglePlates(target) {
-                $('#dash-' + target + '-plates').toggle();
-                $('#dash-all-plates').toggle();
+                $('#dash-' + target + '-page').toggle();
+                $('#dash-all-page').toggle();
             }
-            $(document).on('click', '.show-plates-link', function (event) {
-                event.preventDefault();
-                const target = $(this).data('target');
-                togglePlates(target);
-            });
-
-            function togglePages(target) {
+            function togglePages() {
                 $('#dash-full-page').toggle();
                 $('#dash-retained-page').toggle();
             }
             $(document).on('click', '.show-page-link', function (event) {
                 event.preventDefault();
                 const target = $(this).data('target');
-                togglePages(target);
+                if (target === 'retained' || target === 'full') {
+                    togglePages();
+                } else {
+                    togglePlates(target);
+                }
             });
         });
     </script>

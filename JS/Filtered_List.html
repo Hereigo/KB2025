@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Vehicles</title>
+</head>
+
+<body>
+
+    <h2>My Vehicles</h2>
+
+    <input type="text" id="searchInput" onkeyup="filterVehicles()"
+        placeholder="Vehicle registration number or vehicle make/model" />
+
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Registration Mark</th>
+                <th>Make / Model</th>
+            </tr>
+        </thead>
+        <tbody id="vehicleTable">
+            <tr>
+                <td>BMN-282-X</td>
+                <td>1990 SEAT MERBELLA 850</td>
+            </tr>
+            <tr>
+                <td>BMN-628-R</td>
+                <td>1983 VAUXHALL ASTRA GTE</td>
+            </tr>
+            <tr>
+                <td>ABC-123-D</td>
+                <td>2025 AUDI Q7</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function filterVehicles() {
+            var input = document.getElementById("searchInput").value.toLowerCase();
+            var rows = document.getElementById("vehicleTable").getElementsByTagName("tr");
+
+            for (var i = 0; i < rows.length; i++) {
+                var reg = rows[i].cells[0].textContent.toLowerCase();
+                var model = rows[i].cells[1].textContent.toLowerCase();
+
+                if (reg.includes(input) || model.includes(input)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,9 +1,4 @@
-public class Program
-{
-    public static void Main()
-    {
+// dotnet run TEST.cs
+// if - dotnet --version ==> 10.x
 
-
-        System.Console.WriteLine("Hello, World!");
-    }
-}
+Console.WriteLine($"Today is {DateTime.Now:dddd, MMM dd yyyy}");

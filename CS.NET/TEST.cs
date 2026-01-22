@@ -1,3 +1,6 @@
+// #!/usr/bin/env dotnet run
+// Uncomment the line above to run it on Uix or similar environments.
+
 // - if - dotnet --version >= 10.x you can:
 // dotnet run TEST.cs
 

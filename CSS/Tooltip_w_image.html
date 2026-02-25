@@ -9,18 +9,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         div.tooltip,
-        [id^="tooltip"] {
-            max-width: 400px;
-            min-width: 400px;
-            width: 400px;
-        }
-
-        [id^="tooltip"] img {
+        /* 
+        [id^="tooltip111"] img {
             max-width: 300px;
             min-width: 300px;
             width: 300px;
             height: auto;
             border-radius: 8px;
+        } */
+
+        .image-tooltip .tooltip-inner {
+            background-color: #006dfc;
+            border-radius: 10px;
+            max-width: 320px;
+            min-width: 320px;
+            padding: 5px 0px;
+            width: 320px;
+        }
+
+        .image-tooltip .tooltip-inner img {
+            border-radius: 5px;
+            max-width: 300px;
+            min-width: 300px;
+            width: 300px;
+        }
+
+        .image-tooltip .tooltip-arrow::before {
+            border-right-color: #006dfc !important;
         }
     </style>
 </head>
@@ -29,8 +44,8 @@
     <p class="m-5">
         <button type="button" class="btn btn-primary"
             title="<img src='https://www.puvanesvarar.com/wp-content/uploads/2021/08/Business-license-example.jpg.webp' width='150' class='img-fluid'>"
-            data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right">
-            Hover me 1
+            data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="image-tooltip">
+            Hover me =)
         </button>
     </p>
 

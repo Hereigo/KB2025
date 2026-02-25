@@ -107,6 +107,7 @@ Dbx:the_coding_space
 Dev:backendPortal
 Dev:backend_ready
 Dev:bintree
+Dev:codedamn
 Dev:coding_learning1
 Dev:computer_science_and_programming
 Dev:courseguy_udemy
@@ -121,6 +122,7 @@ Dev:library_dev
 Dev:linkedin_learning
 Dev:martxweb
 Dev:sigmaSoftwareUniversity
+Dev:the_coding_space
 Dev:zero_to_mastery
 Eng:angel_eng_lish
 Eng:protsykk_tt
@@ -195,11 +197,12 @@ Web:javascript_trainings
 Web:javascriptv
 Web:progersit
 Web:react_tg
-Web:react_training
+Web:react_training + NextJs
 Web:webDev201
 Web:webDev_plus
 Web:webDev_trainings
 Web:webDevcoursefree
+Web:webdev_trainings
 Web:yeahub_frontend
 Web:yeahub_node_backend
 Xtr:gram_Channels

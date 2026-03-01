@@ -1,0 +1,12 @@
+{
+  "name": "kb2025",
+  "version": "1.0.0",
+  "description": "Test App =)",
+  "main": "APP.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^40.6.1"
+  }
+}

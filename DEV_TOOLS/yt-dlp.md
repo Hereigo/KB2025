@@ -1,7 +1,9 @@
 ```bash
 
-yt-dlp https://www.youtube.com/watch?v=VIDEO_ID_!!! -x --audio-format mp3
+yt-dlp -x --audio-format mp3 [VIDEO_URL_HERE]
 
-yt-dlp -o %(title)s.%(ext)s https://www.youtube.com/watch?v=VIDEO_ID_!!!
+yt-dlp -o %(title)s.%(ext)s [VIDEO_URL_HERE]
+
+yt-dlp -x –audio-format mp3 –audio-quality 0 –embed-thumbnail –add-metadata -o %(title)s.%(ext) [VIDEO_URL_HERE]
 
 ```

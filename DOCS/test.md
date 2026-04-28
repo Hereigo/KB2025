@@ -1,3 +1,8 @@
-### TEST TEXT
+### JS Arrays
 
-![...](./img/Clipboard_04-28-2026_01.jpg)
+![](./img/Arrays.jpg)
+
+### Storage Systems
+
+![...](./img/Storage_Systems.jpg)
+

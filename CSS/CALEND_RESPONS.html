@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        .container-fluid {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .row:not(.bg-primary) {
+            flex: 1;
+            display: flex;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+        }
+        .table-responsive {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        table {
+            height: 100%;
+            table-layout: fixed;
+        }
+        tr {
+            height: calc(100% / 7);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <header class="row bg-primary text-white p-3">
+            <div class="col-12">
+                <h1>Header</h1>
+            </div>
+        </header>
+        <div class="row">
+            <main class="col-lg-10 order-2 order-lg-1 p-3">
+                <h2>Main Content - 7x7 Grid</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Cell 1,1</td>
+                                <td>Cell 1,2</td>
+                                <td>Cell 1,3</td>
+                                <td>Cell 1,4</td>
+                                <td>Cell 1,5</td>
+                                <td>Cell 1,6</td>
+                                <td>Cell 1,7</td>
+                            </tr>
+                            <tr>
+                                <td>Cell 2,1</td>
+                                <td>Cell 2,2</td>
+                                <td>Cell 2,3</td>
+                                <td>Cell 2,4</td>
+                                <td>Cell 2,5</td>
+                                <td>Cell 2,6</td>
+                                <td>Cell 2,7</td>
+                            </tr>
+                            <tr>
+                                <td>Cell 3,1</td>
+                                <td>Cell 3,2</td>
+                                <td>Cell 3,3</td>
+                                <td>Cell 3,4</td>
+                                <td>Cell 3,5</td>
+                                <td>Cell 3,6</td>
+                                <td>Cell 3,7</td>
+                            </tr>
+                            <tr>
+                                <td>Cell 4,1</td>
+                                <td>Cell 4,2</td>
+                                <td>Cell 4,3</td>
+                                <td>Cell 4,4</td>
+                                <td>Cell 4,5</td>
+                                <td>Cell 4,6</td>
+                                <td>Cell 4,7</td>
+                            </tr>
+                            <tr>
+                                <td>Cell 5,1</td>
+                                <td>Cell 5,2</td>
+                                <td>Cell 5,3</td>
+                                <td>Cell 5,4</td>
+                                <td>Cell 5,5</td>
+                                <td>Cell 5,6</td>
+                                <td>Cell 5,7</td>
+                            </tr>
+                            <tr>
+                                <td>Cell 6,1</td>
+                                <td>Cell 6,2</td>
+                                <td>Cell 6,3</td>
+                                <td>Cell 6,4</td>
+                                <td>Cell 6,5</td>
+                                <td>Cell 6,6</td>
+                                <td>Cell 6,7</td>
+                            </tr>
+                            <tr>
+                                <td>Cell 7,1</td>
+                                <td>Cell 7,2</td>
+                                <td>Cell 7,3</td>
+                                <td>Cell 7,4</td>
+                                <td>Cell 7,5</td>
+                                <td>Cell 7,6</td>
+                                <td>Cell 7,7</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+            <aside class="col-lg-2 order-1 order-lg-2 bg-light p-3">
+                <h3>Right Sidebar</h3>
+                <p>This is the sidebar content. On small screens, it appears above the main content.</p>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>

@@ -14,6 +14,8 @@ yt-dlp -F [VIDEO_URL_HERE]
 yt-dlp -F -v [VIDEO_URL_HERE] 
 
 # Download Selected by Number:
-yt-dlp -f 123 [VIDEO_URL_HERE]
+yt-dlp -f --cookies-from-browser 123 [VIDEO_URL_HERE]
+
+# For --cookies-from-browser is Necessary Supported Browser.
 
 ```

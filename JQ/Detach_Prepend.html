@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+  var x;
+  $("#b1").click(function(){
+    x = $("p").detach();
+  });
+  $("#b2").click(function(){
+    $("body").prepend(x);
+  });
+});
+</script>
+</head>
+<body>
+<p>Hey, there!</p>
+<p>Welcome to BeginnersBook.com.</p>
+<p>Your favourite tutorial site.</p>
+<button id="b1">Detach p elements</button>
+<button id="b2">Restore p elements</button>
+</body>
+</html>

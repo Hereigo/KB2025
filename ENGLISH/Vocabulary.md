@@ -15,6 +15,4 @@
 
 - Yes, sometimes I can **snore**. Usually, when I'm really **exhausted**. Nevertheless, I sleep in a room on my own so that I don't **keep** my partner **awake**.
 
-- 
-
 - ...

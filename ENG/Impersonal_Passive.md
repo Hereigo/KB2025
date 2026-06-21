@@ -2,7 +2,7 @@ The **impersonal passive** (sometimes called the **passive reporting structure**
 
 They are used when the speaker wants to report a belief, opinion, claim, or assumption without saying exactly who holds that belief.
 
-> "**It is** believed that + clause"
+> **It is** believed that + clause
 
 People generally believe this now; it is a current belief.
 
@@ -10,9 +10,15 @@ People generally believe this now; it is a current belief.
 * It is believed that regular exercise improves mental health.
 * It is believed that the castle is haunted.
 
+> **What** clause **are** believed + some condition **?**
+
+* What sleep habits in your country are believed to be healthy or unhealthy?
+* Which sleep practices are considered normal in modern society?
+* What sleep traditions are thought to be unusual in your culture?
+
 This is common in formal writing, academic texts, journalism, and reports.
 
-> "**It was** believed that + clause"
+> **It was** believed that + clause
 
 People believed this in the past (and it may or may not still be believed today).
 
@@ -22,7 +28,7 @@ People believed this in the past (and it may or may not still be believed today)
 
 This often implies that the belief belonged to a particular period in the past.
 
-> "**It has been** believed that + clause"
+> **It has been** believed that + clause
 
 This belief has existed for some time and continues to the present (or its influence continues).
 

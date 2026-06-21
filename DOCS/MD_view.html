@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Markdown Viewer</title>
+</head>
+<body>
+
+    
+    <div id="preview"></div>
+
+    <hr />
+
+    <textarea id="md" rows="10" cols="60">
+# ABCD
+
+- test
+- test
+
+```javascript        
+function getCookie(name) {
+    let value = `; ${document.cookie}`;
+    let parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+```
+    </textarea>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        const textarea = document.getElementById("md");
+        const preview = document.getElementById("preview");
+
+        function render() {
+            preview.innerHTML = marked.parse(textarea.value);
+        }
+
+        textarea.addEventListener("input", render);
+
+        render();
+
+    </script>
+</body>
+</html>

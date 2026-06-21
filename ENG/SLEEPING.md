@@ -15,4 +15,14 @@
 
 - Yes, sometimes I can **snore**. Usually, when I'm really **exhausted**. Nevertheless, I sleep in a room on my own so that I don't **keep** my partner **awake**.
 
+- Many people in the developed world are **not only** sleeping much less then necessary, 
+
+- **But also** suffering health problems as a result.
+
+- **Furthermore**, this 24/7 culture means that **as well as** consumers staying awake for longer then they used to.
+
+- **In addition to** this,  ....
+
+- **Moreover**, with increased pressure at work, many employees ...
+
 - ...

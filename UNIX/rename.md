@@ -11,7 +11,13 @@ find "$VIDEO_DIR" -maxdepth 1 -type f | while IFS= read -r file; do
         "$file")
 
     # Format as 10 digits: 4 decimal before then point and 5 after
-    prefix=$(printf "%10.5f" "$duration")
+    # (with leading zeros if necessary)
+    prefix=$(printf "%010.5f" "$duration")
+    # %10.5f
+    # ││ │ └── f = print a floating-point number
+    # ││ └──── .5 = print exactly 5 digits after the decimal point
+    # │└────── 10 = minimum field width is 10 characters
+    # └─────── % = start of a format specifier
 
     dir=$(dirname "$file")
     base=$(basename "$file")

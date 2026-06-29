@@ -33,6 +33,20 @@ https://tecmint.com
 https://thehackernews.com
 https://thelinuxexp.com
 https://tldp.org/ldp/bash-beginners-guide/html
+https://t.me/alpine_linux
+https://t.me/arcoLinux
+https://t.me/esBunsenlabs
+https://t.me/fossGrupo
+https://t.me/fossGrupo/103438 (FreeOS)
+https://t.me/fossPost
+https://t.me/freenuxChanel
+https://t.me/linuxBloc
+https://t.me/linuxcamp_tg
+https://t.me/linux_gram
+https://t.me/linuxos_tg
+https://t.me/recura_tech
+https://t.me/trueGnulinux
+https://t.me/xfceDevelopment
 https://training.linuxfoundation.org/training/introduction-to-linux/
 https://ubuntu.com/tutorials
 https://unixmen.com

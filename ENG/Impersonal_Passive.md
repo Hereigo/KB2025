@@ -1,10 +1,8 @@
-The **impersonal passive** (sometimes called the **passive reporting structure**).
+The **impersonal passive** (or the **passive reporting structure**).
 
 They are used when the speaker wants to report a belief, opinion, claim, or assumption without saying exactly who holds that belief.
 
-> **It is** believed that + clause
-
-People generally believe this now; it is a current belief.
+> **It is** believed that + clause ... (it is a current belief now).
 
 * It is believed that the Earth formed about 4.5 billion years ago.
 * It is believed that regular exercise improves mental health.
@@ -18,9 +16,7 @@ People generally believe this now; it is a current belief.
 
 This is common in formal writing, academic texts, journalism, and reports.
 
-> **It was** believed that + clause
-
-People believed this in the past (and it may or may not still be believed today).
+> **It was** believed that + clause ... (in the past and it may still be believed today).
 
 * It was believed that the Sun revolved around the Earth.
 * In the Middle Ages, it was believed that diseases were caused by bad air.

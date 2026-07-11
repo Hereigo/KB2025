@@ -48,7 +48,8 @@
 
 - I couldn’t agree more. 
 - That’s a good/fair point. 
-- I take/see your point. 
+- I take your point.
+- I see your point. 
 - That makes sense.
 
 > Expressing disagreement
@@ -59,7 +60,7 @@
  
 > Partially agreeing
 
-- I agree (with you) up to a point, but ... 
+- I agree up to a point, but ... 
 - I agree to some extent, but ... 
 - I suppose so, but ... 
 - I understand what you’re saying, but ... 

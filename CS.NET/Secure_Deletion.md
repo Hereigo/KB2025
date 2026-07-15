@@ -73,3 +73,42 @@ public static class SimpleSecureDelete
     }
 }
 ```
+#### The same but async.
+
+```cs
+using System.Threading.Tasks;
+
+public static class AsyncSecureDelete
+{
+    public static async Task SecureDeleteAsync(string filePath)
+    {
+        if (!File.Exists(filePath))
+            return;
+
+        FileInfo fileInfo = new FileInfo(filePath);
+        long length = fileInfo.Length;
+
+        // Overwrite with zeros asynchronously
+        using (FileStream stream = new FileStream(
+            filePath, FileMode.Open, FileAccess.Write, FileShare.None,
+            bufferSize: 4096, useAsync: true))
+        {
+            byte[] buffer = new byte[4096];
+            Array.Clear(buffer, 0, buffer.Length);
+
+            long remaining = length;
+            while (remaining > 0)
+            {
+                int toWrite = (int)Math.Min(buffer.Length, remaining);
+                await stream.WriteAsync(buffer, 0, toWrite);
+                remaining -= toWrite;
+            }
+
+            await stream.FlushAsync();
+        }
+
+        // Finally delete the file
+        File.Delete(filePath);
+    }
+}
+```

@@ -1,8 +1,10 @@
-- By the time you get home, I'll have made the dinner and it'll be on the table.
+> Testing warnings.
 
-- Do you think you will have worked for the same company in five years' time?
+- **By the time you** get home, **I'll have made** the dinner and it'll be on the table.
 
-- Renata's first class is at 10 a.m., so she won't be teaching at 9 a.m.
+- Do you think **you will have worked for** the same company **in five years'** time?
+
+- Renata's first class is at 10 a.m., so **she won't be teaching at** 9 a.m.
 
 - It's not certain, but we should have finished painting the house by this weekend. Then we can put all the furniture back.
 

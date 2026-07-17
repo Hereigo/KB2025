@@ -8,17 +8,17 @@
 
 - It's not certain, but we **should have finished painting** the house **by this weekend**. Then we can put all the furniture back.
 
-- **__You'll have slept for__** less than five hours by the time you get up for work. You'll be exhausted.
+- **<u>__You'll have slept for__</u>** less than five hours by the time you get up for work. You'll be exhausted.
 
 - **In the past, it was thought that** meat was a luxury. Now people eat it all the time.
 
-- In recent months, it has been suggested that carbon emissions are higher than they've ever been.
+- **In recent months, it has been suggested that** carbon emissions are higher than they've ever been.
 
-- It is believed that fast food is now part of a regular diet for many people.
+- **It is believed that** fast food **is now** part of a regular diet for many people.
 
 - In ancient times, it was expected that children **<u>__would work__</u>** from an early age.
 
-- It has been reported recently that thieves have stolen paintings worth five million dollars from a gallery in New York.
+- **It has been reported recently that** thieves have stolen paintings worth five million dollars from a gallery in New York.
 
 - I used to do a regular workout, but now I just do exercises at home from time to time.
 

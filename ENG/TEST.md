@@ -1,7 +1,5 @@
 > Testing warnings.
 
-==Just a temporary line.==
-
 - **By the time you** get home, **I'll have made** the dinner and it'll be on the table.
 
 - Do you think **you will have worked for** the same company **in five years'** time?
@@ -10,7 +8,7 @@
 
 - It's not certain, but we **should have finished painting** the house **by this weekend**. Then we can put all the furniture back.
 
-- **<u>__You'll have slept for__</u>** less than five hours by the time you get up for work. You'll be exhausted.
+- **__You'll have slept for__** less than five hours by the time you get up for work. You'll be exhausted.
 
 - **In the past, it was thought that** meat was a luxury. Now people eat it all the time.
 

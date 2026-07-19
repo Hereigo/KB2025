@@ -25,14 +25,6 @@
 - Money problems can lead to **financial stress**
 - **"Make ends meet"** is a common challenge
  
-> Sleep
-
-- Essential for **recovery and brain function**
-- Good sleep improves **concentration** and mood
-- **Sleep deprivation** reduces performance, then you feel 
-- **Sleep hygiene** improves sleep quality
-- **"Sleep like a log"** = sleep very well
- 
 > Stress
 
 - High stress **negatively affects** health

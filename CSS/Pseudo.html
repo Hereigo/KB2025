@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            border: 1px blue solid;
+            padding: 1em;
+            margin: .5em;
+            width: 15em;
+        }
+        .div-type-1:only-of-type {
+            background-color:aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        .div-type:only-of-type = (only single exists)
+    </h2>
+    <div class="box">
+        <div class="div-type-1"> Div-Type-1 </div>
+           <div> No classes Div or another type. </div>
+    </div>
+    <div class="box">
+        <div class="div-type-1"> Div-Type-1 </div>
+     
+    </div>
+    <div class="box">
+        <div class="div-type-1"> Div-Type-1 </div>
+        <div class="div-type-1"> Div-Type-1 </div>
+    </div>
+</body>
+
+</html>

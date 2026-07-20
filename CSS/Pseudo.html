@@ -6,14 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .box{
+        .box {
             border: 1px blue solid;
             padding: 1em;
             margin: .5em;
             width: 15em;
         }
+
+        h2:first-of-type,
         .div-type-1:only-of-type {
-            background-color:aquamarine;
+            background-color:bisque !important;
+        }
+
+        h2:last-of-type,
+        .div-type-1:last-of-type {
+            background-color: aqua;
         }
     </style>
 </head>
@@ -22,15 +29,20 @@
     <h2>
         .div-type:only-of-type = (only single exists)
     </h2>
+    <h2>
+        .div-type:last-of-type
+    </h2>
     <div class="box">
         <div class="div-type-1"> Div-Type-1 </div>
-           <div> No classes Div or another type. </div>
+        <div> No classes Div or another type. </div>
     </div>
     <div class="box">
         <div class="div-type-1"> Div-Type-1 </div>
-     
+
     </div>
     <div class="box">
+        <div class="div-type-1"> Div-Type-1 </div>
+        <div class="div-type-1"> Div-Type-1 </div>
         <div class="div-type-1"> Div-Type-1 </div>
         <div class="div-type-1"> Div-Type-1 </div>
     </div>

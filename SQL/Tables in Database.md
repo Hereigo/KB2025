@@ -4,6 +4,7 @@
 SELECT TABLE_NAME 
 FROM !!_YOUR_DB_NAME_!!.INFORMATION_SCHEMA.TABLES 
 WHERE TABLE_TYPE = 'BASE TABLE'
+AND NAME LIKE '%user%'
 ```
 
 To find table names in a Microsoft SQL Server database that contain a column with a specific name (including special characters), you can use a dynamic SQL query against the system catalog views. Here’s how you can do it in T-SQL:

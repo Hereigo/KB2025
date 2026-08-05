@@ -12,7 +12,7 @@ npm run start:dev
 
 * **"module"** means the project use by default *"Ecma-Script"* rather than *"Common Script"*.
 
-* ( **index.js** must be renamed to **index.cjs** )
+* ( **index.js** must be renamed to **index.cjs** ) ???
 
 
 ### nodemon

@@ -4,7 +4,7 @@ const PORT = 3000;
 
 const app = express();
 
-app.set('view engine', 'ejs'); // template engige that installed additionally
+app.set('view engine', 'ejs'); // ejs = template engine installed
 
 app.use('/media', express.static('public'));
 

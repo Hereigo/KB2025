@@ -1,4 +1,5 @@
-const express = require('express');
+// const express = require('express'); // for Common Scripts format.
+import express from 'express';         // for Ecma-Script format.
 
 const PORT = 3000;
 

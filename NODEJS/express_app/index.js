@@ -1,6 +1,6 @@
 // const express = require('express'); // for Common Scripts format.
 import express from 'express';         // for Ecma-Script format.
-import { create, findAll, findByLogin, remove, update } from './src/users/users.controller.js';
+import { create, findAll, findById, remove, update } from './src/users/users.controller.js';
 const PORT = 3000;
 
 const app = express();
@@ -25,11 +25,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/users', findAll);
-app.get('/users/:login', findByLogin);
+app.get('/users/:login', findById);
 app.post('/users', create);
 app.put('/users/:login', update);
 app.delete('/users/:login', remove);
 
 app.listen(PORT, () => {
-    console.log('Server successfuly started on port ' + PORT);
+    console.log(`Server successfuly started on http://localhost:${PORT}`);
 });

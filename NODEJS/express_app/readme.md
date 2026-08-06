@@ -31,3 +31,8 @@ npm install --save-dev nodemon
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 ```
+
+### SQLite
+```sh
+npm install sqlite3
+```

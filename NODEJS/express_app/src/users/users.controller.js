@@ -25,6 +25,8 @@ export const findById = async (req, res) => {
 export const create = async (req, res) => {
     const userBody = req.body;
 
+    console.log("Req.Body - ", req.body);
+
     try {
         const user = await usersService.create(userBody);
 

@@ -16,6 +16,16 @@ export const getUserById = async (userId) => {
     return user;
 };
 
+export const getUserByLogin = async (login) => {
+    return usersRepository.findByLogin(login);
+};
+
+export const getRoleByUserId = async (userId) => {
+    const user = await getUserById(userId);
+
+    return user.role;
+}
+
 export const create = async (user) => {
     const possibleUser = await usersRepository.findByLogin(user.login);
 

@@ -11,8 +11,13 @@ export const hasRole = (requiredRole) => {
         try {
             const { token } = req.body;
         
-            const decoded = jsonwebtoken.decode(token, WEB_TOKEN_SECRET_KEY);
+
+            const decoded01 = jsonwebtoken.decode(token, WEB_TOKEN_SECRET_KEY);
+            console.log('d22 - ', decoded01); // ?????
+            const decoded = jsonwebtoken.verify(token, WEB_TOKEN_SECRET_KEY);
+            console.log('d - ', decoded); // ??????
     
+            
             const userRole = await getRoleByUserId(decoded.id);
             const userPermissionLevel = rolePermissions[userRole] || 0;
     

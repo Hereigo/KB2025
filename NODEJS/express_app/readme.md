@@ -36,3 +36,27 @@ npm install --save-dev nodemon
 ```sh
 npm install sqlite3
 ```
+
+### VSCodium installed as Flatpak
+
+Best solution: make VSCodium terminal use the host shell
+
+- In VSCodium, open:
+- Settings → search for terminal profiles linux
+- Or edit settings.json and add:
+
+```json
+{
+    "terminal.integrated.profiles.linux": {
+        "Host Bash": {
+            "path": "flatpak-spawn",
+            "args": ["--host", "bash", "-l"]
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "Host Bash"
+}
+```
+Then you can:
+```sh
+flatpak-spawn --host npm --version
+```

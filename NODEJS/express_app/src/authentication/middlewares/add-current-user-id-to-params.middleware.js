@@ -2,6 +2,9 @@ import jsonwebtoken from 'jsonwebtoken';
 
 export const addCurrentUserIdToParams = (req, res, next) => {
     try {
+
+        console.log('B - ', req.body);
+
         const { token } = req.body;
     
         const decoded01 = jsonwebtoken.verify(token);

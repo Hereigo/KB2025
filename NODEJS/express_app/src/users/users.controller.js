@@ -12,6 +12,9 @@ export const findAll = async (req, res, next) => {
 
 export const findById = async (req, res, next) => {
     try {
+
+        console.log('C - ', req.body);
+
         const userId = req.params.id;
 
         const user = await usersService.getUserById(userId);

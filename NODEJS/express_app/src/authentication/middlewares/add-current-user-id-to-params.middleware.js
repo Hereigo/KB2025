@@ -5,7 +5,7 @@ export const addCurrentUserIdToParams = (req, res, next) => {
     try {
         const { token } = req.body;
 
-        // Don't use! - jsonwebtoken.decode(a,b); - Doesn't verify signature or expiration!
+        // Souldn't use jsonwebtoken.decode(a,b); - Doesn't verify signature or expiration!
         const decoded = jsonwebtoken.verify(token, WEB_TOKEN_SECRET_KEY);
 
         req.params.id = decoded.id;

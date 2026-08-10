@@ -6,10 +6,6 @@ export const authenticated = (req, res, next) => {
     try {
         const { token } = req.body;
 
-        
-        // TODO:
-        // Is it enought ???
-
         // jsonwebtoken.decode(a,b); - Doesn't verify signature or expiration!    
         jsonwebtoken.verify(token, WEB_TOKEN_SECRET_KEY);
 

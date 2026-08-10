@@ -1,3 +1,4 @@
+import { getRoleByUserLogin } from '../users/users.service.js';
 import * as authenticationService from './authentication.service.js';
 
 export const signIn = async (req, res, next) => {
@@ -6,7 +7,10 @@ export const signIn = async (req, res, next) => {
 
         const token = await authenticationService.authenticateUser(login, password);
 
-        return res.json({ token });
+        req.session.token = token;
+        req.session.role = await getRoleByUserLogin(login);
+
+        return res.json({});
     } catch (error) {
         return next(error);
     }

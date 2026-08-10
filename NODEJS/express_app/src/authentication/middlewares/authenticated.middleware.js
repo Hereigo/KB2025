@@ -4,9 +4,9 @@ import { WEB_TOKEN_SECRET_KEY } from '../../../config.js';
 
 export const authenticated = (req, res, next) => {
     try {
-        const { token } = req.body;
-
-        // jsonwebtoken.decode(a,b); - Doesn't verify signature or expiration!    
+        const token = req.session.token;
+    
+        // jsonwebtoken.decode(a,b); - Doesn't verify signature or expiration!
         jsonwebtoken.verify(token, WEB_TOKEN_SECRET_KEY);
 
         return next();

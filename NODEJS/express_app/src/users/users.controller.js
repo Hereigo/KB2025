@@ -13,6 +13,7 @@ export const findAll = async (req, res, next) => {
 export const findById = async (req, res, next) => {
     try {
         const userId = req.params.id;
+
         const user = await usersService.getUserById(userId);
 
         return res.json(user);
@@ -24,6 +25,7 @@ export const findById = async (req, res, next) => {
 export const create = async (req, res, next) => {
     try {
         const userBody = req.body;
+
         const user = await usersService.create(userBody);
 
         return res.json(user);
@@ -48,6 +50,7 @@ export const update = async (req, res, next) => {
 export const remove = async (req, res, next) => {
     try {
         const userId = req.params.id;
+
         const user = await usersService.remove(userId);
 
         return res.json(user);

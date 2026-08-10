@@ -7,6 +7,9 @@ export const getAllUsers = () => {
 };
 
 export const getUserById = async (userId) => {
+
+    // return usersRepository.findById(userId); ???????????
+
     const user = await usersRepository.findById(userId);
 
     if (!user) {
@@ -25,6 +28,12 @@ export const getRoleByUserId = async (userId) => {
 
     return user.role;
 }
+
+export const getRoleByUserLogin = async (userLogin) => {
+    const user = await getUserByLogin(userLogin);
+
+    return user.role;
+};
 
 export const create = async (user) => {
     const possibleUser = await usersRepository.findByLogin(user.login);

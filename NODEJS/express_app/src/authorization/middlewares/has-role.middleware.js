@@ -11,12 +11,8 @@ export const hasRole = (requiredRole) => {
         try {
             const { token } = req.body;
         
-
-            const decoded01 = jsonwebtoken.decode(token, WEB_TOKEN_SECRET_KEY);
-            console.log('d22 - ', decoded01); // ?????
+            // Don't use! - jsonwebtoken.decode(a,b); - Doesn't verify signature or expiration!
             const decoded = jsonwebtoken.verify(token, WEB_TOKEN_SECRET_KEY);
-            console.log('d - ', decoded); // ??????
-    
             
             const userRole = await getRoleByUserId(decoded.id);
             const userPermissionLevel = rolePermissions[userRole] || 0;

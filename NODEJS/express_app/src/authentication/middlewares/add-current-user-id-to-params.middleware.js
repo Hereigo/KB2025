@@ -1,16 +1,12 @@
 import jsonwebtoken from 'jsonwebtoken';
+import { WEB_TOKEN_SECRET_KEY } from '../../../config.js';
 
 export const addCurrentUserIdToParams = (req, res, next) => {
     try {
-
-        console.log('B - ', req.body);
-
         const { token } = req.body;
-    
-        const decoded01 = jsonwebtoken.verify(token);
-        console.log('d01 - ', decoded01); // ?????
-        const decoded = jsonwebtoken.decode(token);
-        console.log('d - ', decoded); // ?????
+
+        // Don't use! - jsonwebtoken.decode(a,b); - Doesn't verify signature or expiration!
+        const decoded = jsonwebtoken.verify(token, WEB_TOKEN_SECRET_KEY);
 
         req.params.id = decoded.id;
 

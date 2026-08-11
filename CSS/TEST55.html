@@ -1,68 +1,88 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Square Radio Buttons Form</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    .square-btn {
-      align-items: center;
-      aspect-ratio: 1 / 1;
-      border-radius: 0.75rem;
-      display: flex;
-      justify-content: center;
-    }
-    .btn-check:checked + .btn {
-      background-color: blue;
-      border-color: blue;
-      color: #fff;
-    }
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Square Radio Buttons Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .square-btn {
+            align-items: center;
+            aspect-ratio: 1 / 1;
+            border-radius: 0.75rem;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
+
 <body class="bg-light">
-  <div class="container p-5">
-    <h3 class="mb-4">Choose an option</h3>
+    <div class="container p-5">
+        <h3 class="mb-4">Choose an option</h3>
 
-    <!-- Form: selected radio will be submitted as "term" -->
-    <form id="optionForm" action="/home/selectedOption" method="post" class="row g-3">
-      <div class="col-12 col-md-6">
-        <input type="radio" class="btn-check" name="term" id="annual" value="annual" autocomplete="off" checked>
-        <label class="btn btn-outline-primary square-btn" for="annual">
-          <div class="option-content">
-            <div><strong>Annual</strong></div>
-            <span class="price">£65.00</span>
-            <span class="dates">01/08/2026 — 31/07/2027</span>
-          </div>
-        </label>
-      </div>
+        <div class="btn-group" role="group" aria-label="Decorated radio buttons">
+            <input type="radio" class="btn-check" name="plan" id="basic" autocomplete="off">
+            <label class="btn btn-outline-primary p-3 text-start" for="basic">
+                <div class="fw-bold">Basic Plan</div>
+                <small class="text-muted">✔ 5 GB Storage<br>✔ Email Support</small>
+            </label>
 
-      <div class="col-12 col-md-6">
-        <input type="radio" class="btn-check" name="term" id="sixmonths" value="sixmonths" autocomplete="off">
-        <label class="btn btn-outline-primary square-btn" for="sixmonths">
-          <div class="option-content">
-            <div><strong>6 months</strong></div>
-            <span class="price">£39.00</span>
-            <span class="dates">01/08/2026 — 31/01/2027</span>
-          </div>
-        </label>
-      </div>
+            <input type="radio" class="btn-check" name="plan" id="pro" autocomplete="off">
+            <label class="btn btn-outline-success p-3 text-start" for="pro">
+                <div class="fw-bold">Pro Plan</div>
+                <small class="text-muted">✔ 50 GB Storage<br>✔ Priority Support<br>✔ Custom Domain</small>
+            </label>
 
-      <div class="col-12 mt-3">
-        <button type="submit" class="btn btn-primary">Continue</button>
-      </div>
-    </form>
-  </div>
+            <input type="radio" class="btn-check" name="plan" id="enterprise" autocomplete="off">
+            <label class="btn btn-outline-danger p-3 text-start" for="enterprise">
+                <div class="fw-bold">Enterprise</div>
+                <small class="text-muted">✔ Unlimited Storage<br>✔ 24/7 Support<br>✔ Dedicated Manager</small>
+            </label>
+        </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.getElementById('optionForm').addEventListener('submit', function (e) {
-      e.preventDefault(); // prevent default form submission
-      const form = e.target;
-      const data = new FormData(form);
-      const selected = data.get('term');
-      alert('Selected option: ' + selected);
-    });
-  </script>
+        <hr />
+
+        <!-- Form: selected radio will be submitted as "term" -->
+        <form id="optionForm" action="/home/selectedOption" method="post" class="row g-3">
+            <div class="col-12 col-md-6">
+                <input type="radio" class="btn-check" name="term" id="annual" value="annual" autocomplete="off">
+                <label class="btn btn-outline-primary square-btn" for="annual">
+                    <div class="option-content">
+                        <div><strong>Annual</strong></div>
+                        <span class="price">£65.00</span>
+                        <span class="dates">01/08/2026 — 31/07/2027</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <input type="radio" class="btn-check" name="term" id="sixmonths" value="sixmonths" autocomplete="off">
+                <label class="btn btn-outline-primary square-btn" for="sixmonths">
+                    <div class="option-content">
+                        <div><strong>6 months</strong></div>
+                        <span class="price">£39.00</span>
+                        <span class="dates">01/08/2026 — 31/01/2027</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary">Continue</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('optionForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // prevent default form submission
+            const form = e.target;
+            const data = new FormData(form);
+            const selected = data.get('term');
+            alert('Selected option: ' + selected);
+        });
+    </script>
 </body>
+
 </html>

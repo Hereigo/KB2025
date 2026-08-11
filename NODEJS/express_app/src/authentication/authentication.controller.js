@@ -7,8 +7,14 @@ export const signIn = async (req, res, next) => {
 
         const token = await authenticationService.authenticateUser(login, password);
 
-        req.session.token = token;
-        req.session.role = await getRoleByUserLogin(login);
+        res.cookie('token', token, { expires: new Date(Date.now() + 20 * 60 * 60 * 1000), httpOnly: true });
+        // To restrict sending Cookies only via HTTPS: ---------------------------------> httpOnly: true, secure: true});
+
+
+        // ?????????
+        // TODO:
+        // req.session.token = token;
+        // req.session.role = await getRoleByUserLogin(login);
 
         return res.json({});
     } catch (error) {

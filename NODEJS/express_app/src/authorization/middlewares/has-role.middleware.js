@@ -9,18 +9,20 @@ export const hasRole = (requiredRole) => {
 
     return async (req, res, next) => {
         try {
-            const { token } = req.body;
-        
-            // Don't use! - jsonwebtoken.decode(a,b); - Doesn't verify signature or expiration!
+
+            // const { token } = req.body;
+            const token = req.cookies.token;
+
             const decoded = jsonwebtoken.verify(token, WEB_TOKEN_SECRET_KEY);
-            
+
             const userRole = await getRoleByUserId(decoded.id);
+            // const userRole = req.session.role; ?????????
             const userPermissionLevel = rolePermissions[userRole] || 0;
-    
+
             if (userPermissionLevel < requiredRolePermission) {
                 throw new NotAuthorizedError();
             }
-    
+
             return next();
         } catch (error) {
             next(error);

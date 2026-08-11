@@ -25,7 +25,7 @@ app.use(express.json()); // express built-in middleware
 app.use(cookieParser());
 
 const sessionStore = new MongoStore({
-    mongoUrl: 'mongodb://localhost/your-database',
+    mongoUrl: 'mongodb://localhost/your-database', // TODO: !!!!!!!!!!!!!!!
     collectionName: 'sessions',
     ttl: 60 * 60,
 });

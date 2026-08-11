@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Square Radio Buttons</title>
+  <title>Square Radio Buttons Form</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     .square-btn {
@@ -34,12 +34,13 @@
   <div class="container p-5">
     <h3 class="mb-4">Choose an option</h3>
 
-    <div class="row g-3">
+    <!-- Form: selected radio will be submitted as "term" -->
+    <form id="optionForm" action="/home/selectedOption" method="post" class="row g-3">
       <div class="col-12 col-md-6">
-        <input type="radio" class="btn-check" name="term" id="annual" autocomplete="off" checked>
+        <input type="radio" class="btn-check" name="term" id="annual" value="annual" autocomplete="off" checked>
         <label class="btn btn-outline-primary square-btn" for="annual">
           <div class="option-content">
-            <div>Annual</div>
+            <div><strong>Annual</strong></div>
             <span class="price">£65.00</span>
             <span class="dates">01/08/2026 — 31/07/2027</span>
           </div>
@@ -47,22 +48,36 @@
       </div>
 
       <div class="col-12 col-md-6">
-        <input type="radio" class="btn-check" name="term" id="sixmonths" autocomplete="off">
+        <input type="radio" class="btn-check" name="term" id="sixmonths" value="sixmonths" autocomplete="off">
         <label class="btn btn-outline-primary square-btn" for="sixmonths">
           <div class="option-content">
-            <div>6 months</div>
+            <div><strong>6 months</strong></div>
             <span class="price">£39.00</span>
             <span class="dates">01/08/2026 — 31/01/2027</span>
           </div>
         </label>
       </div>
-    </div>
 
-    <div class="mt-4">
-      <button id="continueBtn" class="btn btn-primary">Continue</button>
-    </div>
+      <div class="col-12 mt-3">
+        <button type="submit" class="btn btn-primary">Continue</button>
+      </div>
+    </form>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Demo submit handler: shows selected value and prevents actual navigation.
+    // Remove the preventDefault() to let the form submit to the server (action attribute).
+    document.getElementById('optionForm').addEventListener('submit', function (e) {
+      e.preventDefault(); // remove this line if you want a real form submission
+      const form = e.target;
+      const data = new FormData(form);
+      const selected = data.get('term');
+      // Example: send to server with fetch
+      // fetch('/submit', { method: 'POST', body: data });
+      console.log('Selected option:', selected);
+      alert('Selected option: ' + selected);
+    });
+  </script>
 </body>
 </html>

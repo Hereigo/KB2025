@@ -1,7 +1,6 @@
 // const express = require('express'); // for Common Scripts format.
 import express from 'express';         // for Ecma-Script format.
 import './db.js';
-// import { create, findAll, findById, remove, update } from './src/users/users.controller.js';
 import * as usersController from './src/users/users.controller.js';
 import * as authenticationController from './src/authentication/authentication.controller.js';
 import { errorLogger } from './src/errors/middlewares/error-logger.middleware.js';
@@ -9,7 +8,7 @@ import { standardErrorResponser } from './src/errors/middlewares/standard-error-
 import { authenticated } from './src/authentication/middlewares/authenticated.middleware.js';
 import { hasRole } from './src/authorization/middlewares/has-role.middleware.js';
 import { addCurrentUserIdToParams } from './src/authentication/middlewares/add-current-user-id-to-params.middleware.js';
-import { PUBLIC_PORT, SESSION_SECRET_KEY } from './config.js';
+import { PUBLIC_PORT, SESSION_SECRET_KEY, MONGODB_URI } from './config.js';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
@@ -25,17 +24,17 @@ app.use(express.json()); // express built-in middleware
 app.use(cookieParser());
 
 const sessionStore = new MongoStore({
-    mongoUrl: 'mongodb://localhost/your-database', // TODO: !!!!!!!!!!!!!!!
+    mongoUrl: MONGODB_URI,
     collectionName: 'sessions',
     ttl: 60 * 60,
 });
 
 app.use(session({
-    secret: SESSION_SECRET_KEY,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false },
-    store: sessionStore,
+    secret: SESSION_SECRET_KEY, // used to sign the session ID cookie
+    resave: false,              // don't save session if unmodified
+    saveUninitialized: true,    // save new sessions
+    cookie: { secure: false },  // set to true if using HTTPS
+    store: sessionStore
 }));
 
 app.use('/media', express.static('public'));

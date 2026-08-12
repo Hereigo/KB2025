@@ -37,6 +37,12 @@ app.use(session({
     store: sessionStore
 }));
 
+// {
+//   _id: 'bZEUQL4OWq8AV1wWGtcuNOUfEJYwWRfJ',
+//   expires: ISODate('2026-08-12T19:12:30.044Z'),
+//   session: '{"cookie":{"originalMaxAge":null,"expires":null,"secure":false,"httpOnly":true,"path":"/"}}'
+// }
+
 app.use('/media', express.static('public'));
 
 app.use((req, res, next) => { // logging middleware

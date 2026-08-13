@@ -10,6 +10,8 @@ export const hasRole = (requiredRole) => {
     return async (req, res, next) => {
         try {
 
+            console.log('hasRole - ', req.cookies);
+
             // const { token } = req.body;
             const token = req.cookies.token;
 

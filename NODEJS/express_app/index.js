@@ -10,8 +10,8 @@ import { hasRole } from './src/authorization/middlewares/has-role.middleware.js'
 import { addCurrentUserIdToParams } from './src/authentication/middlewares/add-current-user-id-to-params.middleware.js';
 import { PUBLIC_PORT, SESSION_SECRET_KEY, MONGODB_URI } from './config.js';
 import cookieParser from 'cookie-parser';
-import session from 'express-session';
-import MongoStore from 'connect-mongo';
+// import session from 'express-session';
+// import MongoStore from 'connect-mongo';
 
 const PORT = PUBLIC_PORT;
 
@@ -23,19 +23,19 @@ app.use(express.json()); // express built-in middleware
 
 app.use(cookieParser());
 
-const sessionStore = new MongoStore({
-    mongoUrl: MONGODB_URI,
-    collectionName: 'sessions',
-    ttl: 60 * 60,
-});
-
-app.use(session({
-    secret: SESSION_SECRET_KEY, // used to sign the session ID cookie
-    resave: false,              // don't save session if unmodified
-    saveUninitialized: true,    // save new sessions
-    cookie: { secure: false },  // set to true if using HTTPS
-    store: sessionStore
-}));
+// const sessionStore = new MongoStore({
+//     mongoUrl: MONGODB_URI,
+//     collectionName: 'sessions',
+//     ttl: 60 * 60,
+// });
+// 
+// app.use(session({
+//     secret: SESSION_SECRET_KEY, // used to sign the session ID cookie
+//     resave: false,              // don't save session if unmodified
+//     saveUninitialized: true,    // save new sessions
+//     cookie: { secure: false },  // set to true if using HTTPS
+//     store: sessionStore
+// }));
 
 // {
 //   _id: 'bZEUQL4OWq8AV1wWGtcuNOUfEJYwWRfJ',

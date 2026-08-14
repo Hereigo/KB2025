@@ -405,3 +405,4 @@ npm.cmd
 nodevars.bat
 node.exe
 NODEJS/express_app/test-db.db
+NODEJS/express_app/.env

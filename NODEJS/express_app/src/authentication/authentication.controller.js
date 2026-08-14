@@ -7,8 +7,12 @@ export const signIn = async (req, res, next) => {
 
         const token = await authenticationService.authenticateUser(login, password);
 
-        res.cookie('token', token, { expires: new Date(Date.now() + 20 * 60 * 60 * 1000), httpOnly: true });
-        // To restrict sending Cookies only via HTTPS: ---------------------------------> httpOnly: true, secure: true});
+        let tokenExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+        console.log("tokenExpires - ", tokenExpires);
+
+        res.cookie('token', token, { expires: tokenExpires, httpOnly: true });
+        // To restrict sending Cookies only via HTTPS: ---> httpOnly: true, secure: true});
 
 
         // ?????????
@@ -32,4 +36,16 @@ export const signUp = async (req, res, next) => {
     } catch (error) {
         return next(error);
     }
+};
+
+export const signOut = async (req, res, next) => {
+    // const { login, password } = req.body;
+// 
+    // const token = await authenticationService.authenticateUser(login, password);
+
+    // Clear the cookie by setting it to null and expiring immediately
+    res.clearCookie('token');
+
+    //res.redirect('/login'); // or wherever you want to send the user
+    return res.json({});
 };

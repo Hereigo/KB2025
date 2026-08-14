@@ -60,6 +60,7 @@ app.get('/', (req, res) => {
 
 app.post('/signin', authenticationController.signIn);
 app.post('/signup', authenticationController.signUp);
+app.post('/signout', authenticationController.signOut);
 
 app.get('/users/me', authenticated, hasRole('limited_user'), addCurrentUserIdToParams, usersController.findById);
 app.get('/users', authenticated, hasRole('admin'), usersController.findAll);

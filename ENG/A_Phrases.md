@@ -24,4 +24,15 @@ I think you need **to make me the host** before I can share my screen.
 
 We can't hear you - **you're on mute**.
 
-...
+### TIME MARKERS
+
+**By the time** I'd finally understood that, others **already ...**
+
+**Up to that point** I'd just been walking outside, so I can't ...
+
+It started **just moments earlier**, so you didn't missed anything imporatnt.
+
+I have to come out **for a while**.
+
+**In no time** I'd realised that I need to act immediately.
+

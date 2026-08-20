@@ -7,116 +7,130 @@ namespace ConsoleApp1_Test;
 
 internal static class Text_Xlsx
 {
+    private static Dictionary<string, string> _colors = new()
+    {
+        ["gray"] = "FF808080",
+        ["lightblue"] = "FFADD8E6",
+        ["lightgray"] = "FFD3D3D3",
+        ["red"] = "FFFF0000",
+        ["white"] = "FFFFFFFF",
+    };
+
+    internal static Dictionary<string, string> Colors { get => _colors; }
+
     internal static void SaveDatasetToXlsx(string filePath, DataSet dataSet)
     {
-        using (SpreadsheetDocument document = SpreadsheetDocument.Create(filePath, SpreadsheetDocumentType.Workbook))
+        using SpreadsheetDocument document = SpreadsheetDocument.Create(filePath, SpreadsheetDocumentType.Workbook);
+        WorkbookPart workbookPart = document.AddWorkbookPart();
+        workbookPart.Workbook = new Workbook();
+
+        // Styles:
+        XlsxStyles styles = new();
+        uint headerStyle = styles.AddStyle(bold: true, fontColor: Colors["white"], bgColor: Colors["gray"], border: true, horizAlign: HorizontalAlignmentValues.Center);
+        uint lowBalanceStyle = styles.AddStyle(bold: true, fontColor: Colors["red"], bgColor: Colors["lightgray"], border: true, numberFormatId: 4);
+        uint ageStyle = styles.AddStyle(bgColor: Colors["lightblue"], numberFormatId: 1);
+        styles.ApplyTo(workbookPart);
+
+        // Create sheets for each DataTable in the DataSet after applying styles.
+        Sheets sheets = workbookPart.Workbook.AppendChild(new Sheets());
+
+        uint sheetId = 1;
+
+        foreach (DataTable table in dataSet.Tables)
         {
-            WorkbookPart workbookPart = document.AddWorkbookPart();
-            workbookPart.Workbook = new Workbook();
+            WorksheetPart worksheetPart = workbookPart.AddNewPart<WorksheetPart>();
+            SheetData sheetData = new();
+            worksheetPart.Worksheet = new Worksheet(sheetData);
 
-            XlsxStyles styles = new XlsxStyles();
-            uint headerStyle = styles.AddStyle(bold: true, fontColor: "FFFFFFFF", backgroundColor: "FF000000", border: true, horizontalAlignment: HorizontalAlignmentValues.Center);
-            uint currencyStyle = styles.AddStyle(bold: true, fontColor: "FFFF0000", backgroundColor: "FFDDDDDD", border: true, numberFormatId: 4);
-            uint ageStyle = styles.AddStyle(backgroundColor: "FF00FF00", numberFormatId: 1);
-            styles.ApplyTo(workbookPart);
-
-            Sheets sheets = workbookPart.Workbook.AppendChild(new Sheets());
-
-            uint sheetId = 1;
-
-            foreach (DataTable table in dataSet.Tables)
+            // Add sheet to workbook
+            sheets.Append(new Sheet()
             {
-                WorksheetPart worksheetPart = workbookPart.AddNewPart<WorksheetPart>();
-                SheetData sheetData = new SheetData();
-                worksheetPart.Worksheet = new Worksheet(sheetData);
+                Id = workbookPart.GetIdOfPart(worksheetPart),
+                SheetId = sheetId++,
+                Name = table.TableName
+            });
 
-                // Add sheet to workbook
-                sheets.Append(new Sheet()
+            // Header row
+            Row headerRow = new();
+            foreach (DataColumn column in table.Columns)
+            {
+                Cell cell = new()
                 {
-                    Id = workbookPart.GetIdOfPart(worksheetPart),
-                    SheetId = sheetId++,
-                    Name = table.TableName
-                });
+                    DataType = CellValues.String,
+                    CellValue = new CellValue(column.ColumnName),
+                    StyleIndex = headerStyle
+                };
+                headerRow.Append(cell);
+            }
+            sheetData.Append(headerRow);
 
-                Row headerRow = new Row();
+            foreach (DataRow dr in table.Rows)
+            {
+                Row newRow = new();
                 foreach (DataColumn column in table.Columns)
                 {
-                    Cell cell = new Cell
+                    Cell cell = new();
+
+                    object value = dr[column]; // Current cell value
+
+                    // Apply conditional formatting based on column name and value:
+
+                    if (column.ColumnName == "Balance" && value is decimal balance && balance < 1000)
                     {
-                        DataType = CellValues.String,
-                        CellValue = new CellValue(column.ColumnName),
-                        StyleIndex = headerStyle
-                    };
-                    headerRow.Append(cell);
-                }
-                sheetData.Append(headerRow);
-
-                // int rowsCounter = 0;
-
-                foreach (DataRow dr in table.Rows)
-                {
-                    Row newRow = new Row();
-                    foreach (DataColumn column in table.Columns)
-                    {
-                        Cell cell = new Cell();
-
-                        object value = dr[column];
-
-                        if (column.ColumnName == "Balance" && value is decimal balance && balance < 1000)
-                        {
-                            cell.StyleIndex = currencyStyle;
-                        }
-                        else if (column.ColumnName == "Age")
-                        {
-                            cell.StyleIndex = ageStyle;
-                        }
-
-                        if (value is string)
-                        {
-                            cell.DataType = CellValues.String;
-                            cell.CellValue = new CellValue(value.ToString());
-                        }
-                        else if (value is int or decimal or double or float)
-                        {
-                            cell.DataType = CellValues.Number;
-                            cell.CellValue = new CellValue(Convert.ToString(value));
-                        }
-                        else
-                        {
-                            cell.DataType = CellValues.String;
-                            cell.CellValue = new CellValue(value?.ToString() ?? string.Empty);
-                        }
-
-                        newRow.Append(cell);
+                        cell.StyleIndex = lowBalanceStyle;
                     }
-                    sheetData.Append(newRow);
+                    else if (column.ColumnName == "Age")
+                    {
+                        cell.StyleIndex = ageStyle;
+                    }
+
+                    // Set cell value and type based on the data type of the value:
+
+                    if (value is string)
+                    {
+                        cell.DataType = CellValues.String;
+                        cell.CellValue = new CellValue(value.ToString());
+                    }
+                    else if (value is int or decimal or double or float)
+                    {
+                        cell.DataType = CellValues.Number;
+                        cell.CellValue = new CellValue(Convert.ToString(value));
+                    }
+                    else
+                    {
+                        cell.DataType = CellValues.String;
+                        cell.CellValue = new CellValue(value?.ToString() ?? string.Empty);
+                    }
+
+                    newRow.Append(cell);
                 }
-
-                // Example: Set column width
-                Columns columns = new Columns(
-                    new Column { Min = 1, Max = (uint)table.Columns.Count, Width = 20, CustomWidth = true }
-                );
-                worksheetPart.Worksheet.InsertAt(columns, 0);
-
-
-                // Add Formulas:
-                int rowFrom = 2; // Assuming the first data row is at index 2 (after header)
-                int rowTo = table.Rows.Count + 1; // Last data row index (data rows + header rows count)
-
-                Row formulaRow = new Row();
-                Cell formulaCell = new Cell
-                {
-                    CellFormula = new CellFormula($"SUM(A{rowFrom}:A{rowTo})"),
-                    DataType = CellValues.Number
-                };
-                formulaRow.Append(formulaCell);
-                sheetData.Append(formulaRow);
+                sheetData.Append(newRow);
             }
 
-            workbookPart.Workbook.Save();
-        }
-    }
+            // Set column width:
 
+            Columns columns = new(
+                new Column { Min = 1, Max = (uint)table.Columns.Count, Width = 20, CustomWidth = true }
+            );
+            worksheetPart.Worksheet.InsertAt(columns, 0);
+
+            // Add Formulas:
+
+            int rowFrom = 2; // Assuming the first data row is at index 2 (after header)
+            int rowTo = table.Rows.Count + 1; // Last data row index (data rows + header rows count)
+
+            Row formulaRow = new();
+            Cell formulaCell = new()
+            {
+                CellFormula = new CellFormula($"SUM(A{rowFrom}:A{rowTo})"),
+                DataType = CellValues.Number
+            };
+            formulaRow.Append(formulaCell);
+            sheetData.Append(formulaRow);
+        }
+
+        workbookPart.Workbook.Save();
+    }
 }
 
 /// <summary>
@@ -143,14 +157,14 @@ internal sealed class XlsxStyles
         double? fontSize = null,
         string? fontName = null,
         string? fontColor = null,
-        string? backgroundColor = null,
+        string? bgColor = null,
         bool border = false,
         uint numberFormatId = 0,
-        HorizontalAlignmentValues? horizontalAlignment = null,
+        HorizontalAlignmentValues? horizAlign = null,
         bool wrapText = false)
     {
         uint fontId = AddFont(bold, italic, fontSize, fontName, fontColor);
-        uint fillId = AddFill(backgroundColor);
+        uint fillId = AddFill(bgColor);
         uint borderId = border ? AddThinBorder() : 0;
 
         CellFormat format = new CellFormat
@@ -165,12 +179,12 @@ internal sealed class XlsxStyles
             ApplyNumberFormat = numberFormatId != 0
         };
 
-        if (horizontalAlignment.HasValue || wrapText)
+        if (horizAlign.HasValue || wrapText)
         {
             Alignment alignment = new Alignment();
-            if (horizontalAlignment.HasValue)
+            if (horizAlign.HasValue)
             {
-                alignment.Horizontal = horizontalAlignment.Value;
+                alignment.Horizontal = horizAlign.Value;
             }
             if (wrapText)
             {

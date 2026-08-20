@@ -7,7 +7,9 @@ export const signIn = async (req, res, next) => {
 
         const token = await authenticationService.authenticateUser(login, password);
 
-        let tokenExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
+        // let tokenExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
+
+        let tokenExpires = new Date(Date.now() + 60 * 60 * 1000);
 
         console.log("tokenExpires - ", tokenExpires);
 

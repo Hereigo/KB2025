@@ -24,7 +24,6 @@ internal static class Text_Xlsx
         WorkbookPart workbookPart = document.AddWorkbookPart();
         workbookPart.Workbook = new Workbook();
 
-        // Styles:
         XlsxStyles styles = new();
         uint headerStyle = styles.AddStyle(bold: true, fontColor: Colors["white"], bgColor: Colors["gray"], border: true, horizAlign: HorizontalAlignmentValues.Center);
         uint lowBalanceStyle = styles.AddStyle(bold: true, fontColor: Colors["red"], bgColor: Colors["lightgray"], border: true, numberFormatId: 4);
@@ -42,7 +41,6 @@ internal static class Text_Xlsx
             SheetData sheetData = new();
             worksheetPart.Worksheet = new Worksheet(sheetData);
 
-            // Add sheet to workbook
             sheets.Append(new Sheet()
             {
                 Id = workbookPart.GetIdOfPart(worksheetPart),
@@ -50,7 +48,6 @@ internal static class Text_Xlsx
                 Name = table.TableName
             });
 
-            // Header row
             Row headerRow = new();
             foreach (DataColumn column in table.Columns)
             {

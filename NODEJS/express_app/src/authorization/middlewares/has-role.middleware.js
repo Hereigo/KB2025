@@ -5,20 +5,19 @@ import { rolePermissions } from '../authorization.service.js';
 import { WEB_TOKEN_SECRET_KEY } from '../../../config.js';
 
 export const hasRole = (requiredRole) => {
+
     const requiredRolePermission = rolePermissions[requiredRole] || 0;
 
     return async (req, res, next) => {
         try {
 
-            console.log('hasRole - ', req.cookies);
-
-            // const { token } = req.body;
-            const token = req.cookies.token;
+            // const token = req.cookies.token;
+            const token = req.session.token;
 
             const decoded = jsonwebtoken.verify(token, WEB_TOKEN_SECRET_KEY);
 
             const userRole = await getRoleByUserId(decoded.id);
-            // const userRole = req.session.role; ?????????
+
             const userPermissionLevel = rolePermissions[userRole] || 0;
 
             if (userPermissionLevel < requiredRolePermission) {

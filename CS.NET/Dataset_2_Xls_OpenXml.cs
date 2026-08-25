@@ -1,9 +1,6 @@
-using System.Data;
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
-
-namespace ConsoleApp1_Test;
 
 internal static class Text_Xlsx
 {

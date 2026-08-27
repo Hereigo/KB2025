@@ -1,21 +1,35 @@
 ## Language guidelines
+
 The following sections describe practices that the .NET docs team follows to prepare code examples and samples. In general, follow these practices:
 
 - Utilize modern language features and C# versions whenever possible.
+
 - Avoid outdated language constructs.
+
 - Only catch exceptions that can be properly handled; avoid catching general exceptions. For example, sample code shouldn't catch the System.Exception type without an exception filter.
+
 - Use specific exception types to provide meaningful error messages.
+
 - Use LINQ queries and methods for collection manipulation to improve code readability.
+
 - Use asynchronous programming with async and await for I/O-bound operations.
+
 - Be cautious of deadlocks and use Task.ConfigureAwait when appropriate.
+
 - Use the language keywords for data types instead of the runtime types. For example, use string instead of System.String, or int instead of System.Int32. This recommendation includes using the types nint and nuint.
+
 - Use int rather than unsigned types. The use of int is common throughout C#, and it's easier to interact with other libraries when you use int. Exceptions are for documentation specific to unsigned data types.
+
 - Use var only when a reader can infer the type from the expression. Readers view our samples on the docs platform. They don't have hover or tool tips that display the type of variables.
+
 - Write code with clarity and simplicity in mind.
+
 - Avoid overly complex and convoluted code logic.
+
 More specific guidelines follow.
 
 ### String data
+
 Use string interpolation to concatenate short strings, as shown in the following code.
 
 ```csharp
@@ -52,6 +66,7 @@ foreach (var student in scoreQuery)
 }
 ```
 ### Constructors and initialization
+
 Use Pascal case for primary constructor parameters on record types:
 
 ```csharp
@@ -73,6 +88,7 @@ public class LabelledContainer<T>(string label)
 }
 ```
 ### Arrays and collections
+
 Use collection expressions to initialize all collection types:
 ```csharp
 string[] vowels = [ "a", "e", "i", "o", "u" ];
@@ -125,6 +141,7 @@ exampleDel1("Hey");
 ```
 
 ### try-catch and using statements in exception handling
+
 Use a try-catch statement for most exception handling.
 
 ```csharp
@@ -172,6 +189,7 @@ byte charset3 = normalStyle.GdiCharSet;
 ```
 
 ### && and || operators
+
 Use && instead of & and || instead of | when you perform comparisons, as shown in the following example.
 
 ```csharp
@@ -192,7 +210,8 @@ else
 ```
 If the divisor is 0, the second clause in the if statement would cause a run-time error. But the && operator short-circuits when the first expression is false. That is, it doesn't evaluate the second expression. The & operator would evaluate both, resulting in a run-time error when divisor is 0.
 
-### new operator
+### "new" operator
+
 Use one of the concise forms of object instantiation when the variable type matches the object type, as shown in the following declarations. This form isn't valid when the variable is an interface type, or a base class of the runtime type.
 
 ```csharp
@@ -221,6 +240,7 @@ fourthExample.Location = "Redmond";
 fourthExample.Age = 2.3;
 ```
 ### Event handling
+
 Use a lambda expression to define an event handler that you don't need to remove later:
 
 ```csharp
@@ -247,9 +267,11 @@ void Form1_Click(object? sender, EventArgs e)
 }
 ```
 ### Static members
+
 Call static members by using the class name: ClassName.StaticMember. This practice makes code more readable by making static access clear. Don't qualify a static member defined in a base class with the name of a derived class. While that code compiles, the code readability is misleading, and the code might break in the future if you add a static member with the same name to the derived class.
 
 ### LINQ queries
+
 Use meaningful names for query variables. The following example uses seattleCustomers for customers who are located in Seattle.
 
 ```csharp
@@ -299,6 +321,7 @@ var scoreQuery = from student in students
                  select new { Last = student.LastName, score };
 ```
 ### Implicitly typed local variables
+
 Use implicit typing for local variables when the type of the variable is obvious from the right side of the assignment.
 
 ```csharp
@@ -358,6 +381,7 @@ use implicit type for the result sequences in LINQ queries. The section on LINQ 
 Some of our samples explain the natural type of an expression. Those samples must use var so that the compiler picks the natural type. Even though those examples are less obvious, the use of var is required for the sample. The text should explain the behavior.
 
 ### File scoped namespace declarations
+
 Most code files declare a single namespace. Therefore, our examples should use the file scoped namespace declarations:
 
 ```csharp
@@ -442,6 +466,7 @@ namespace CoolStuff.AwesomeFeature
 }
 ```
 ### Style guidelines
+
 In general, use the following format for code samples:
 
 - Use four spaces for indentation. Don't use tab characters.
@@ -475,10 +500,10 @@ In general, use the following format for code samples:
 - Insert one space between the comment delimiter (//) and the comment text, as shown in the following example.
 
 ```csharp
-// The following declaration creates a query. It does not run
-// the query.
+// The following declaration creates a query. It does not run the query.
 ```
 ### Layout conventions
+
 Good layout uses formatting to emphasize the structure of your code and to make the code easier to read. Microsoft examples and samples conform to the following conventions:
 
 - Use the default Code Editor settings (smart indenting, four-character indents, tabs saved as spaces). For more information, see Options, Text Editor, C#, Formatting.

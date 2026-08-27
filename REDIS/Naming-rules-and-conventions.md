@@ -38,6 +38,7 @@ By convention, C# programs use PascalCase for type names, namespaces, and all pu
 In the following examples, guidance pertaining to elements marked public is also applicable when working with protected and protected internal elements, all of which are intended to be visible to external callers.
 
 ### Pascal case
+
 Use pascal casing ("PascalCasing") when naming a class, interface, struct, or delegate type.
 
 ```csharp
@@ -99,6 +100,7 @@ public record PhysicalAddress(
 For more information on positional records, see Positional syntax for property definition.
 
 ### Camel case
+
 Use camel casing ("camelCasing") when naming private or internal non-constant fields, and prefix them with _. Use camel casing when naming local variables, including instances of a delegate type.
 
 ```csharp
@@ -129,6 +131,7 @@ public T SomeMethod<T>(int someNumber, bool isValid)
 }
 ```
 ### Primary constructor parameters
+
 How you name primary constructor parameters depends on the type being declared:
 
 For class and struct types: Use camel casing, consistent with other method parameters.
@@ -158,6 +161,7 @@ public record Address(string Street, string City, string PostalCode);
 For more information on primary constructors, see Primary constructors.
 
 ### Type parameter naming guidelines
+
 The following guidelines apply to type parameters on generic type parameters. Type parameters are the placeholders for arguments in a generic type or a generic method. You can read more about generic type parameters in the C# programming guide.
 
 Do name generic type parameters with descriptive names, unless a single letter name is completely self explanatory and a descriptive name wouldn't add value.
@@ -187,11 +191,11 @@ Consider indicating constraints placed on a type parameter in the name of parame
 The code analysis rule CA1715 can be used to ensure that type parameters are named appropriately.
 
 ### Extra naming conventions
+
 Examples that don't include using directives, use namespace qualifications. If you know that a namespace is imported by default in a project, you don't have to fully qualify the names from that namespace. Qualified names can be broken after a dot (.) if they're too long for a single line, as shown in the following example.
 
 ```csharp
 var currentPerformanceCounterCategory = new System.Diagnostics.
     PerformanceCounterCategory();
 ```
-
 You don't have to change the names of objects that were created by using the Visual Studio designer tools to make them fit other guidelines.

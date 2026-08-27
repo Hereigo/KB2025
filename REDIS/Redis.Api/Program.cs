@@ -3,12 +3,14 @@ using StackExchange.Redis;
 var builder = WebApplication.CreateBuilder(args);
 
 var redisConnectionString = builder.Configuration.GetConnectionString("Redis") ?? "localhost:6379";
-builder.Services.AddSingleton<IConnectionMultiplexer>(_ =>
+builder.Services.AddSingleton<ConnectionMultiplexer>(_ =>
 {
 	var configuration = ConfigurationOptions.Parse(redisConnectionString);
 	configuration.AbortOnConnectFail = false;
 	return ConnectionMultiplexer.Connect(configuration);
 });
+builder.Services.AddSingleton<IConnectionMultiplexer>(services =>
+	services.GetRequiredService<ConnectionMultiplexer>());
 
 var app = builder.Build();
 

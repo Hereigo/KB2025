@@ -406,3 +406,4 @@ nodevars.bat
 node.exe
 NODEJS/express_app/test-db.db
 .env
+PASSWORDS

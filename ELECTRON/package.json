@@ -7,6 +7,9 @@
     "start": "electron ."
   },
   "dependencies": {
-    "electron": "^40.6.1"
+    "electron": "^44.0.0"
+  },
+  "allowScripts": {
+    "electron@40.10.6": true
   }
 }

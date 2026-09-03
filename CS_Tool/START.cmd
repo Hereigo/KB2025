@@ -1,2 +1,3 @@
-dotnet new globaljson --sdk-version 10.0.301
-dotnet run Hello.cs
+REM dotnet new globaljson --sdk-version 10.0.400
+
+dotnet run Chromiup.cs

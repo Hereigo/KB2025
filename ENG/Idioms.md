@@ -25,6 +25,7 @@
 - I **told a white lie** about liking the food so I wouldn’t hurt her feelings.
 
 ---
+---
 | Idiom | Meaning (Simple Explanation) |
 | --- | --- |
 | **be caught red-handed** | Be caught while doing something wrong. |

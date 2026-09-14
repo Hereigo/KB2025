@@ -15,6 +15,15 @@ CREATE DATABASE db1
 ```
 
 ```powershell
+dotnet tool list -g
+# if necessary:
+dotnet tool install --global dotnet-ef
+
+
 dotnet ef migrations add InitialCreate
 dotnet ef database update
+```
+
+```sql
+select * from "Todos" limit 100
 ```

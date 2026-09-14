@@ -11,8 +11,25 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
+// Seed data if Todos table is empty
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate(); // applies migrations
+
+    if (!db.Todos.Any())
+    {
+        db.Todos.AddRange(
+            new Todo { Title = "First task", IsComplete = false },
+            new Todo { Title = "Second task", IsComplete = true }
+        );
+        db.SaveChanges();
+    }
+}
+
 // Minimal API endpoints
 app.MapGet("/todos", async (AppDbContext db) => await db.Todos.ToListAsync());
+
 app.MapPost("/todos", async (AppDbContext db, Todo todo) =>
 {
     db.Todos.Add(todo);

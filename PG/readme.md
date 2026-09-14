@@ -13,3 +13,8 @@ CREATE DATABASE db1
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
 ```
+
+```powershell
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+```

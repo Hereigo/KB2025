@@ -1,4 +1,4 @@
-**Modern .NET applications typically integrate with SAP C4C and SAP S/4HANA using either OData/REST APIs with OAuth 2.0 authentication or specialized connectors like SAP NetWeaver Gateway and third-party ADO.NET providers. These approaches allow secure CRUD operations, real-time data exchange, and seamless interoperability with SAP’s ERP and CRM systems.**
+**Modern .NET applications typically integrate with SAP using either OData/REST APIs with OAuth 2.0 authentication or specialized connectors like SAP Gateway and third-party ADO.NET providers. These approaches allow secure CRUD operations, real-time data exchange, and seamless interoperability with SAP’s ERP and CRM systems.**
 
 ## 🔑 Common Integration Approaches
 
@@ -16,13 +16,11 @@
 
 - **Example:**
 
-    csharp
-
-    ```
-    var client = new HttpClient();
-    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-    var response = await client.GetAsync("https://sap-instance/api/v1/Customers");
-    ```
+```cs
+var client = new HttpClient();
+client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+var response = await client.GetAsync("https://sap-instance/api/v1/Customers");
+```
 
 ### 2\. **SAP NetWeaver Gateway**
 
@@ -38,7 +36,7 @@
 
 - Provides **ADO.NET-style access** to SAP data (tables, functions, IDocs).
 
-- Works with **S/4HANA, ECC, NetWeaver, and C4C**.
+- Works with **HANA, ECC, NetWeaver, etc**.
 
 - Developers can query SAP data using **SQL-like syntax** inside .NET apps.
 
@@ -59,7 +57,7 @@
 | Method | Best For | Pros | Cons |
 | --- | --- | --- | --- |
 | OData/REST APIs | Cloud & hybrid apps | Standard, flexible, secure | Requires manual API handling |
-| NetWeaver Gateway | On-prem S/4HANA | Mature, widely used | Extra middleware setup |
+| NetWeaver Gateway | On-prem HANA | Mature, widely used | Extra middleware setup |
 | CData ADO.NET Provider | BI/reporting, SQL-style access | Easy integration, SQL queries | Licensed product, adds dependency |
 | Custom REST Wrappers | Cloud-native .NET apps | Reusable, structured | Requires custom development effort |
 
@@ -71,21 +69,19 @@
 
 - **Licensing:** Third-party providers (like CData) require paid licenses.
 
-- **Versioning:** SAP APIs evolve; ensure compatibility with S/4HANA Cloud updates.
+- **Versioning:** SAP APIs evolve; ensure compatibility with HANA Cloud updates.
 
 👉 If you’re building a **modern .NET Core app**, the most common and future-proof approach is **direct OData/REST API integration with OAuth 2.0**, while **CData ADO.NET Provider** is ideal if you want SQL-like access or BI tool integration.
 
 -----------
 
-a **step‑by‑step C# example** of how a modern .NET application can connect to **SAP C4C** or **SAP S/4HANA** via OData/REST APIs and perform CRUD operations. This is the most common and future‑proof approach.
+a **step‑by‑step C# example** of how a modern .NET application can connect to **SAP** via OData/REST APIs and perform CRUD operations. This is the most common and future‑proof approach.
 
 ## 🔐 Step 1: Authentication (OAuth 2.0)
 
 Most SAP Cloud systems (C4C, S/4HANA Cloud) use **OAuth 2.0 client credentials flow**.
 
-csharp
-
-```
+```cs
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
@@ -109,9 +105,7 @@ var token = JsonDocument.Parse(json).RootElement.GetProperty("access_token").Get
 
 Example: Fetch **Customers** from SAP C4C or S/4HANA.
 
-csharp
-
-```
+```cs
 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
 var apiUrl = "https://your-sap-instance/sap/c4c/odata/v1/Customers";
@@ -128,9 +122,7 @@ if (result.IsSuccessStatusCode)
 
 Example: Add a new Customer.
 
-csharp
-
-```
+```cs
 var newCustomer = new
 {
     FirstName = "John",
@@ -146,9 +138,7 @@ Console.WriteLine($"Status: {postResult.StatusCode}");
 
 ## 🔄 Step 4: Update an Existing Record (PATCH)
 
-csharp
-
-```
+```cs
 var updateCustomer = new { Email = "new.email@example.com" };
 var updateContent = new StringContent(JsonSerializer.Serialize(updateCustomer), System.Text.Encoding.UTF8, "application/json");
 
@@ -163,9 +153,7 @@ Console.WriteLine($"Update Status: {patchResult.StatusCode}");
 
 ## 🗑️ Step 5: Delete a Record
 
-csharp
-
-```
+```cs
 var deleteResult = await client.DeleteAsync($"{apiUrl}(CustomerID='123')");
 Console.WriteLine($"Delete Status: {deleteResult.StatusCode}");
 ```

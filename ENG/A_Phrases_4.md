@@ -25,20 +25,23 @@
 
 ---
 
-- Although ...
+- **Although** it was raining, we went for a walk.
 
-- ... even though ...
+- I went to school **even though** I had a headache.
 
-- Despite ...
+- **Despite (-ing)** being nervous, she gave a great presentation.
 
-- ... inspite of ...
+- We enjoyed the picnic **in spite of** the bad weather.
+ 
+- He passed the exam **in spite of (-ing)** having little time to study.
 
-- However, ...
+- I wanted to go out. **However**, I decided to stay home.
 
-- Nevertheless, ...
+- The task was difficult. **Nevertheless**, she completed it on time.
 
 ---
 
-- **To bypass the rules.**
+---
 
-- 
+- He found a way to get what he wants **to bypass the rules** of the system.
+ 

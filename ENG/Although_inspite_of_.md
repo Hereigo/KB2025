@@ -20,7 +20,7 @@
  | Expression | --- | Example |
 | --- | --- | --- |
 | **Although** | **subject + verb** | **Although** it was raining, we went for a walk. |
-| **... even though ...** | **subject + verb** | We went for a walk **even though** it was raining. |
+| **... even though ...** | **subject + verb** | We went for a walk **even though!** it was raining **havily!** |
 | --- | --- | --- |
 | **Despite ...** | **+ noun** | **Despite** the rain, we went for a walk. |
 | **Despite ...** | **+ ..-ing** | **Despite raining**, we went for a walk. |

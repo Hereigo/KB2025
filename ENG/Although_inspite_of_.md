@@ -17,16 +17,18 @@
 
 ## These **contrast expressions** show that two ideas are unexpected or contradictory, but they differ in **grammar and position**.
 
- | Expression | Example |
+ | Expression | --- | Example |
+| --- | --- | --- |
+| **Although** | **subject + verb** | **Although** it was raining, we went for a walk. |
+| **... even though ...** | **subject + verb** | We went for a walk **even though** it was raining. |
+| --- | --- | --- |
+| **Despite ...** | **+ noun** | **Despite** the rain, we went for a walk. |
+| **Despite ...** | **+ ..-ing** | **Despite raining**, we went for a walk. |
+| **... in spite of ...** | **+ noun** | We went for a walk **in spite of the rain**. |
+| **... in spite of ...** | **+ ..-ing** | We went for a walk **in spite of it raining**. |
 | --- | --- |
-| **Although + subject + verb** | **Although** it was raining, we went for a walk. |
-| **... even though + subject + verb** | We went for a walk **even though** it was raining. |
-| **Despite + noun** | **Despite** the rain, we went for a walk. |
-| **Despite + -ing** | **Despite raining**, we went for a walk. |
-| **... in spite of + noun** | We went for a walk **in spite of the rain**. |
-| **... in spite of + -ing** | We went for a walk **in spite of it raining**. |
-| **... . However, ...** | It was raining. **However,** we went for a walk. |
-| **... . Nevertheless, ...** | It was raining. **Nevertheless,** we went for a walk. |
+| **... . However, ...** | **Start contrasting** | It was raining. **However,** we went for a walk. |
+| **... . Nevertheless, ...** | **Start contrasting** | It was raining. **Nevertheless,** we went for a walk. |
 
 --- 
 ### Key differences

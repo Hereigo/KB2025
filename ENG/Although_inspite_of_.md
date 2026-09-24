@@ -67,10 +67,10 @@
  ✅ **Despite the fact that it was raining, we went out.**\
  ✅ **Although it was raining, we went out.**
 
- So, a useful rule is:
+ ### So, a useful rule is:
 
- **Although / even though \+ subject + verb**
+ Although / even though + **subject + verb**
 
- **Despite / in spite of + noun / -ing**
+ Despite / in spite of + **noun / -ing**
 
- **However / nevertheless + new sentence**
+ However / nevertheless + **new sentence**

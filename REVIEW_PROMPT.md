@@ -1,3 +1,3 @@
 ```sh
-/review-bugbot Review changes in the repository at "c:\\Users\\<USER_NAME_HERE>\\source\\repos\\KB2025".
+/review-bugbot Review changes in the repository at "<PUT_FULL_PATH_HERE>\\repos\\KB2025".
 ```

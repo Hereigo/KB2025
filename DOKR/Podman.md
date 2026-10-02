@@ -4,7 +4,7 @@ podman machine list
 # If needed
 podman machine start
 
-# To see containers
+# To see Containers Status
 podman ps -a
 # If needed
 podman start [container_name]

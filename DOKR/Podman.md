@@ -4,6 +4,12 @@ podman machine list
 # If needed
 podman machine start
 
+# If issues:
+wsl --shutdown
+podman machine stop
+# Machine "podman-machine-default" stopped successfully
+podman machine start
+
 # To see Containers Status
 podman ps -a
 # If needed

@@ -24,4 +24,8 @@ podman run --name [your-persist-container] --restart=unless-stopped
 podman exec -it [container_name] printenv
 podman exec -it [container_name] printenv | grep ConnectionStrings
 
+# Unregister VM
+wsl --list --verbose
+wsl --unregister podman-machine-default
+podman machine list
 ```

@@ -7,7 +7,6 @@ set -euo pipefail
 SOURCE="backupDatabaseDir"
 PASSFILE="$SOURCE/password.txt"
 ARCHIVE="backupDatabaseDir.tar"
-ARCHIVE2="backupDatabaseDir.dat"
 ENCRYPTED="$ARCHIVE.gpg"
 
 # Verify required paths
@@ -32,7 +31,7 @@ gpg --batch --pinentry-mode loopback \
 
 # Delete originals only after successful verification
 rm -rf -- "$SOURCE"
-mv "$ARCHIVE" "$ARCHIVE2"
+rm -r -- "$ARCHIVE"
 
 echo "Backup created: $ENCRYPTED"
 

@@ -14,8 +14,7 @@ ENCRYPTED="$ARCHIVE.gpg"
 [[ -f "$PASSFILE" ]] || { echo "Passphrase file not found"; exit 1; }
 
 # Archive the directory, excluding the passphrase file
-# tar --exclude="$PASSFILE" -cf "$ARCHIVE" "$SOURCE"
-tar -cf "$ARCHIVE" "$SOURCE"
+tar --exclude="$PASSFILE" -cvf "$ARCHIVE" "$SOURCE"
 #   -cf => .tar | -czf => .tar.gz (compressed)
 
 # gpg --yes - permits silently to overwrite an existing encrypted output file.
@@ -25,9 +24,11 @@ gpg --batch --yes --pinentry-mode loopback \
     --output "$ENCRYPTED" "$ARCHIVE"
 
 # Verify that the encrypted file can be decrypted
-gpg --batch --pinentry-mode loopback \
+gpg --batch --yes --pinentry-mode loopback \
     --passphrase-file "$PASSFILE" \
-    --decrypt "$ENCRYPTED" | tar -tzf - >/dev/null
+    --decrypt "$ENCRYPTED" | tar -tf - >/dev/null
+
+echo "Verification successful"
 
 # Delete originals only after successful verification
 rm -rf -- "$SOURCE"

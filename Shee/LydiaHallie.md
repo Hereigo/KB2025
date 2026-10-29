@@ -65,3 +65,6 @@ Agent teams use a lot more tokens than sub-agents. For most use cases, a sub-age
 
 Success depends heavily on having an accurate plan and shared task list upfront. Verification still requires manual oversight or built-in checks like tests and images. The team lead agent can notice when teammates quit or are idle and manage them accordingly.
 
+#### Plugins can bundle 
+things like skills, agents, hooks, and MCP into something reusable that can be shared with teams or other people.
+

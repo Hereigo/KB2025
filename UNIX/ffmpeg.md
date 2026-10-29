@@ -1,69 +1,87 @@
-```bash
+```sh
+
 #!/bin/bash
 
-# for file in /home/user/Downloads/TEMP/*.mp4
-# do
-#  #ffmpeg -ss 00:00:00 -to 00:59:59 -i "$file" -c:v libx265 -pix_fmt yuv420p -crf 25 -preset fast -tune animation -c:a aac "${file/OLD_PATH/NEW_PATH}"
-#   ffmpeg -i "$file" -c:v libx265 -pix_fmt yuv420p -crf 25 -preset fast -tune animation -c:a aac "${file/.mp4/_B.mp4}"
-# done
+# Define directories
+dir="/home/user/Videos"
 
-dir="/home/user/Downloads"
+for source_file in "$dir"/*.{mp4,mov,mkv,MP4,MOV,MKV}; do
 
-# Do if any .mp3 files exist in the directory
-if ls "$dir"/*.mp3 1> /dev/null 2>&1; then 
-  for file in "$dir"/*.mp3
-  do
-	lame --mp3input -b 64 "$file" "${file/.mp3/_out.mp3}"  
-  done
-else
-  echo "No .mp3 files found in the directory."
-fi
+    # Skip if no .mp4 files are found
+    [ -e "$source_file" ] || continue
 
-# Do if any .mp4 files exist in the directory
-if ls "$dir"/*.mp4 1> /dev/null 2>&1; then 
-  for file in "$dir"/*.mp4
-  do
-    # ffmpeg -ss 00:00:00 -to 00:04:40 -i "$file" -c:v libx265 -pix_fmt yuv420p -crf 25 -preset fast -tune animation -c:a aac "${file/.mp4/_A.mp4}"
-    # ffmpeg -ss 00:06:38 -to 00:08:03 -i "$file" -c:v libx265 -pix_fmt yuv420p -crf 25 -preset fast -tune animation -c:a aac "${file/.mp4/_B.mp4}"
-    ffmpeg -i "$file" -c:v libx265 -pix_fmt yuv420p -crf 25 -preset fast -tune animation -c:a aac "${file/.mp4/_B.mp4}"
-  done
-else
-  echo "No .mp4 files found in the directory."
-fi
+    filename=$(basename -- "$source_file")
+    filename_noext="${filename%.*}"
+    converted_file="${dir}/${filename_noext}_AAA.mp4"
 
-# Explanation:
-# 
-# ls "$dir"/*.mp3: Lists all .mp3 files in the specified directory.
-# 1> /dev/null 2>&1: Redirects both standard output (stdout) and error output (stderr) to /dev/null to suppress unnecessary output.
-# If there are .mp3 files, the script prints a message saying they exist. Otherwise, it prints a message saying no .mp3 files are found.
+    # to CUT:
+    # ffmpeg -ss 00:00:00 -to 23:59:59 -i "$file" -c:v ....
 
-##############################
+    ffmpeg -i "$source_file" -c:v libx265 -pix_fmt yuv420p -crf 25 -preset fast -tune animation -c:a aac "$converted_file"
+    wait
+    echo "Created - $converted_file"
 
-dir="/path/to/directory"
+    source_size=$(stat -c %s "$source_file")
+    converted_size=$(stat -c %s "$converted_file")
 
-# Check if any files exist
-# if [ "$(ls -A $dir)" ]; then
-#   # Loop through all files in the directory
-#   for file in "$dir"/*; do
-#     if [ -f "$file" ]; then
-#       # Specify the new name pattern, for example, prefix with 'new_'
-#       new_name="$dir/new_$(basename "$file")"
-#       
-#       # Rename the file
-#       mv "$file" "$new_name"
-#     fi
-#   done
-# else
-#   echo "No files found in the directory."
-# fi
+    if [ "$source_size" -gt "$converted_size" ]; then
+        rm "$source_file"
+    else
+        rm "$converted_file"
+    fi
+done
 
-# Explanation:
-# 
-#     if [ "$(ls -A $dir)" ]: Checks if the directory contains any files.
-#     for file in "$dir"/*: Loops through all files in the directory.
-#     basename "$file": Gets the name of the file without the directory part.
-#     mv "$file" "$new_name": Renames the file.
-# 
-# You can adjust the new_name variable to modify the renaming logic based on your needs.
+echo "Convertation done."
 
+find "$dir" -maxdepth 1 -type f | while IFS= read -r file; do
+    duration=$(ffprobe \
+        -v error \
+        -show_entries format=duration \
+        -of default=noprint_wrappers=1:nokey=1 \
+        "$file")
+
+    # Format as 10 digits: (4 decimal before) + . + (5 after)
+    # (with leading zeros if necessary)
+    prefix=$(printf "%010.5f" "$duration")
+
+    dir=$(dirname "$file")
+    base=$(basename "$file")
+
+    # Get the file size in bytes.
+    # stat -c '%s' prints only the size.
+    # -- marks the end of command options so filenames beginning with '-'
+    # are treated as filenames instead of options.
+    size=$(stat -c '%s' -- "$file")
+    
+    ext=""
+    # Must be fixed for filename only with no path!!!
+    # if [[ "$file" == *.* && "$file" != .* ]]; then
+    if [[ "$file" == *.* ]]; then
+        ext=".${file##*.}"
+    fi
+
+    newname="${dir}/${prefix}_${size}${ext}"
+    
+    i=1
+    # Repeat while:
+    #   1. A file with the desired name already exists, and
+    #   2. That existing file is not the file we're currently processing.
+    #
+    # The second condition prevents treating the current file as a collision
+    # if it already has the desired name.
+    while [[ -e "$newname" && "$newname" != "$file" ]]; do
+        newname="${size}_$i${ext}"
+        ((i++))
+    done
+
+    echo "Renaming:"
+    echo "  $base"
+    echo "  -> $(basename "$newname")"
+
+    # Rename the file.
+    # -- prevents filenames beginning with '-' from being treated as options.
+    mv -- "$file" "$newname"
+done
+
+# poweroff
 ```

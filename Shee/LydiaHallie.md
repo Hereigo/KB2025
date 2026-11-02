@@ -78,3 +78,7 @@ Claude Code Desktop takes a screenshot and sends the component code (for example
 
 are functionally similar—both start fresh without retaining any conversation history. The main difference is preference: clear keeps you in the same window, while starting a new session opens a new tab or terminal. Use either when switching to an entirely new task where you don't need to retain any history from the previous conversation.
 
+### Open folder\project vs Environmrnt
+
+Open folder\project points a session at a folder on your computer. The session reads and edits your local files, uses your local git repo and tools, and runs on your machine. Use this when you’re working on code that’s already checked out here.
+Use environment runs the session in a configured environment, usually a remote or cloud sandbox with its own copy of the repository, set up in advance (repo, dependencies, network or secret settings). Use this when you want isolation, a clean setup, or to work without touching your local checkout.

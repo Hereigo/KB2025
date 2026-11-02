@@ -2,27 +2,28 @@
 /init
 ```
 
-### claude.md 
-file provides context to the AI model about the project's structure, conventions, technologies used, commands, architecture, and data flow. It helps reduce the number of tool calls by giving the model upfront information about the codebase, preventing it from needing to make additional queries to understand basic project details.
+### claude.md
 
-The entire claude.md file gets added to the assembled prompts and counts toward your context usage. If the file is very large and contains information that isn't used by the model, you'll consume your token budget much faster. It's important to include only relevant information that the model will actually need.
+- project's structure, conventions, technologies used, commands, architecture, and data flow - to give the model upfront information about the codebase, preventing it from needing to make additional queries to understand basic project details.
+- Keep it not a large.
+- It's important to include only relevant information that the model will actually need. 
 
-#### /permissions
+### /permissions
 
-.claude/settings.json
+in the file .claude/settings.json
 ```json
 "permissions": { 
     "allow":[],"deny":[],"ask":[],"default":[] 
 }
 ```
 
-#### /fewer-permission-prompts
+### /fewer-permission-prompts
 
-The "fewer permission prompts" command analyzes your previous Claude Code sessions, identifies tool calls that you've frequently accepted, and automatically adds them to your permissions settings to reduce repetitive prompting.
+- analyzes your previous Claude Code sessions, identifies tool calls that you've frequently accepted, and automatically adds them to your permissions settings to reduce repetitive prompting.
 
-#### Advisor mode:
+### Advisor mode:
 
-allows you to use a different model (like Opus) specifically for planning tasks while remaining on another model (like Sonnet) for implementation. This lets you leverage the deeper reasoning capabilities of one model for planning without having to manually switch models.
+- allows to use a different model (like Opus) specifically for planning tasks while remaining on another model (like Sonnet) for implementation. This lets you leverage the deeper reasoning capabilities of one model for planning without having to manually switch models.
 
 > The effort level may be set too low (medium or low instead of high or max). Before switching to a different model like Opus or Haiku, adjusting the effort level can often resolve the issue.
 
@@ -66,5 +67,14 @@ Agent teams use a lot more tokens than sub-agents. For most use cases, a sub-age
 Success depends heavily on having an accurate plan and shared task list upfront. Verification still requires manual oversight or built-in checks like tests and images. The team lead agent can notice when teammates quit or are idle and manage them accordingly.
 
 #### Plugins can bundle 
+
 things like skills, agents, hooks, and MCP into something reusable that can be shared with teams or other people.
+
+#### When using the screenshot selection feature
+
+Claude Code Desktop takes a screenshot and sends the component code (for example, React component), all the props, and all the types to the model. This provides the model with complete context about what needs to be modified.
+
+#### Clear and starting a new session 
+
+are functionally similar—both start fresh without retaining any conversation history. The main difference is preference: clear keeps you in the same window, while starting a new session opens a new tab or terminal. Use either when switching to an entirely new task where you don't need to retain any history from the previous conversation.
 

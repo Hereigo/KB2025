@@ -34,3 +34,20 @@ For operations, the article recommends tracking token usage from the start using
 ## Takeaway
 
 The article’s practical message is: send less, retrieve smarter, constrain output, cache what repeats, and measure everything. It frames token optimization as essential for chatbots, coding assistants, enterprise copilots, and autonomous agents—not merely a cost-cutting afterthought. [c-sharpcorner](https://www.c-sharpcorner.com/article/ai-token-optimization-techniques-every-developer-should-know)
+
+## How to save
+
+1. Cool results if you suggested BAD & GOOD examples for AI.
+
+2. ...
+
+3. ...
+
+9. Use plugins (github links):
+   - [caveman](https://github.com/juliusBrussee/caveman)
+   - [code-review-graph](https://github.com/tirth8205/code-review-graph)
+   - [graphify](https://github.com/safishamsi/graphify)
+   - [improve-architecture](https://github.com/mattpocock/skills/blob/main/skills/engineering/improve-codebase-architecture)
+   - [ponytail](https://github.com/dietrichGebert/ponytail)
+   - [rtk](https://github.com/rtk-ai/rtk)
+   - [tokensave](https://github.com/aovestdipaperino/tokensave)

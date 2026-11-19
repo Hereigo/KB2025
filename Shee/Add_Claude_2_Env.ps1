@@ -1,4 +1,4 @@
-# if "claude" command not recognized:
+# if "claude" command not recognized in cmd:
 
 $bin = "$env:USERPROFILE\.local\bin"
 $current = [Environment]::GetEnvironmentVariable("Path", "User")

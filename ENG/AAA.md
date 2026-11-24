@@ -17,3 +17,8 @@
  - _Should we **change tack** if this approach isn't working?_
  - _We weren't getting anywhere with our original plan, so we decided **to change tack**._
  - _If this method doesn't work, we'll have **to change tack**._
+
+---
+
+- What will be **the long lasting effects of** you learning Ebnlish?
+

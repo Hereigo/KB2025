@@ -22,3 +22,15 @@
 
 - What will be **the long lasting effects of** you learning Ebnlish?
 
+---
+
+|     |     |
+| --- | --- |
+| **talk smth. through** | Explaining from the beginning to the end |
+| **go over smth.** | Explain slowly or carefully |
+| **leave out smth.** | Forget smth. or not include it |
+| **slow down** | Speak or do smth. less quickly |
+| **get smth. across** | Communicate info clearly to let easy understand |
+| **figure out smth.** | Understand smth. by thinking of it |
+| **go into smth.** | Explain in details |
+| **break smth. down** | Separate into smaller parts |
